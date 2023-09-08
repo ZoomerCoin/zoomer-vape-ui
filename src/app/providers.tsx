@@ -1,19 +1,43 @@
-'use client'
+"use client";
 
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-import * as React from 'react'
-import { WagmiConfig } from 'wagmi'
+import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
+import * as React from "react";
+import { WagmiConfig } from "wagmi";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
-import { chains, config } from '../wagmi'
+import { chains, config } from "../wagmi";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = React.useState(false)
-  React.useEffect(() => setMounted(true), [])
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
   return (
-    <WagmiConfig config={config}>
-      <RainbowKitProvider chains={chains}>
-        {mounted && children}
-      </RainbowKitProvider>
-    </WagmiConfig>
-  )
+    <ChakraProvider
+      theme={extendTheme({
+        styles: {
+          global: () => ({
+            body: {
+              bg: "#FEFC52",
+            },
+          }),
+        },
+      })}
+    >
+      <WagmiConfig config={config}>
+        <RainbowKitProvider
+          chains={chains}
+          coolMode
+          showRecentTransactions={true}
+          theme={darkTheme({
+            accentColor: "#FEFC52",
+            accentColorForeground: "black",
+            borderRadius: "small",
+            fontStack: "system",
+            overlayBlur: "small",
+          })}
+        >
+          {mounted && children}
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </ChakraProvider>
+  );
 }
