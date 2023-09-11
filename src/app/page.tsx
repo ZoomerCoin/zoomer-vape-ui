@@ -4,7 +4,7 @@ import { VStack, Box, Flex, Spacer } from "@chakra-ui/react";
 import { NavBar } from "../components/NavBar";
 import { GameUI } from "../components/GameUI";
 
-export function Page() {
+const Page = () => {
   return (
     <>
       <VStack spacing={4} align="stretch" p={4}>
@@ -19,6 +19,6 @@ export function Page() {
       </VStack>
     </>
   );
-}
+};
 
 export default Page;
