@@ -187,7 +187,7 @@ const HitTakenModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
         <ModalHeader>YOU TOOK A FAT HIT</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <video autoPlay loop src={require("../../media/vape.mp4")} />
+          <video autoPlay loop src={require("../../public/vape.mp4")} />
         </ModalBody>
         <ModalFooter>
           <Link
@@ -261,7 +261,7 @@ const DividendModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
         <ModalHeader>YOU COLLECTED YOUR DIVIDEND</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <video autoPlay loop src={require("../../media/dance.mp4")} />
+          <video autoPlay loop src={require("../../public/dance.mp4")} />
         </ModalBody>
         <ModalFooter>
           <Link
