@@ -11,7 +11,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My wagmi + RainbowKit App",
+  appName: "Zoomer Vape Game",
   chains,
   projectId: walletConnectProjectId,
 });

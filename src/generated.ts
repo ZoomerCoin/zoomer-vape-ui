@@ -16,13 +16,13 @@ import {
 } from 'wagmi/actions'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// VapeToken
+// VapeGame
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export const vapeTokenABI = [
+export const vapeGameABI = [
   { stateMutability: 'nonpayable', type: 'constructor', inputs: [] },
   {
     type: 'event',
@@ -132,43 +132,8 @@ export const vapeTokenABI = [
   {
     stateMutability: 'view',
     type: 'function',
-    inputs: [],
-    name: 'getETHPotValue',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [],
-    name: 'getEthFeesValue',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [],
-    name: 'getLastPurchasedTime',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [],
-    name: 'getMinInvest',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
     inputs: [{ name: 'useraddress', internalType: 'address', type: 'address' }],
     name: 'getMyDividend',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-  },
-  {
-    stateMutability: 'view',
-    type: 'function',
-    inputs: [],
-    name: 'getvapeTokenPrice',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
   {
@@ -217,11 +182,11 @@ export const vapeTokenABI = [
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
   },
   {
-    stateMutability: 'nonpayable',
+    stateMutability: 'view',
     type: 'function',
     inputs: [],
-    name: 'pause',
-    outputs: [],
+    name: 'owner',
+    outputs: [{ name: '', internalType: 'address payable', type: 'address' }],
   },
   {
     stateMutability: 'nonpayable',
@@ -245,11 +210,11 @@ export const vapeTokenABI = [
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
   {
-    stateMutability: 'view',
+    stateMutability: 'nonpayable',
     type: 'function',
     inputs: [],
-    name: 'rewardsContract',
-    outputs: [{ name: '', internalType: 'address payable', type: 'address' }],
+    name: 'startGame',
+    outputs: [],
   },
   {
     stateMutability: 'view',
@@ -308,13 +273,6 @@ export const vapeTokenABI = [
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    inputs: [],
-    name: 'unpause',
-    outputs: [],
-  },
-  {
     stateMutability: 'view',
     type: 'function',
     inputs: [],
@@ -324,18 +282,18 @@ export const vapeTokenABI = [
 ] as const
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export const vapeTokenAddress = {
-  5: '0x38A305d6250895b9d3f496305F4c2eC8265FD7aA',
+export const vapeGameAddress = {
+  5: '0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A',
 } as const
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export const vapeTokenConfig = {
-  address: vapeTokenAddress,
-  abi: vapeTokenABI,
+export const vapeGameConfig = {
+  address: vapeGameAddress,
+  abi: vapeGameABI,
 } as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -444,610 +402,500 @@ export const erc20ABI = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenRead<
+export function useVapeGameRead<
   TFunctionName extends string,
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"MIN_INVEST_TICK"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"MIN_INVEST_TICK"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenMinInvestTick<
+export function useVapeGameMinInvestTick<
   TFunctionName extends 'MIN_INVEST_TICK',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'MIN_INVEST_TICK',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"allowance"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"allowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenAllowance<
+export function useVapeGameAllowance<
   TFunctionName extends 'allowance',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'allowance',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"balanceOf"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"balanceOf"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenBalanceOf<
+export function useVapeGameBalanceOf<
   TFunctionName extends 'balanceOf',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'balanceOf',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"collectedFee"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"collectedFee"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenCollectedFee<
+export function useVapeGameCollectedFee<
   TFunctionName extends 'collectedFee',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'collectedFee',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"decimals"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decimals"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenDecimals<
+export function useVapeGameDecimals<
   TFunctionName extends 'decimals',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'decimals',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"devFund"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"devFund"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenDevFund<
+export function useVapeGameDevFund<
   TFunctionName extends 'devFund',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'devFund',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"getETHPotValue"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"getMyDividend"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenGetEthPotValue<
-  TFunctionName extends 'getETHPotValue',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
->(
-  config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'getETHPotValue',
-    ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
-}
-
-/**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"getEthFeesValue"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenGetEthFeesValue<
-  TFunctionName extends 'getEthFeesValue',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
->(
-  config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'getEthFeesValue',
-    ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
-}
-
-/**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"getLastPurchasedTime"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenGetLastPurchasedTime<
-  TFunctionName extends 'getLastPurchasedTime',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
->(
-  config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'getLastPurchasedTime',
-    ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
-}
-
-/**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"getMinInvest"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenGetMinInvest<
-  TFunctionName extends 'getMinInvest',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
->(
-  config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'getMinInvest',
-    ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
-}
-
-/**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"getMyDividend"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenGetMyDividend<
+export function useVapeGameGetMyDividend<
   TFunctionName extends 'getMyDividend',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'getMyDividend',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"getvapeTokenPrice"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"isPaused"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenGetvapeTokenPrice<
-  TFunctionName extends 'getvapeTokenPrice',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
->(
-  config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'getvapeTokenPrice',
-    ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
-}
-
-/**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"isPaused"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenIsPaused<
+export function useVapeGameIsPaused<
   TFunctionName extends 'isPaused',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'isPaused',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"lastPurchasedAddress"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lastPurchasedAddress"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenLastPurchasedAddress<
+export function useVapeGameLastPurchasedAddress<
   TFunctionName extends 'lastPurchasedAddress',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'lastPurchasedAddress',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"lastPurchasedTime"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lastPurchasedTime"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenLastPurchasedTime<
+export function useVapeGameLastPurchasedTime<
   TFunctionName extends 'lastPurchasedTime',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'lastPurchasedTime',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"minInvest"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"minInvest"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenMinInvest<
+export function useVapeGameMinInvest<
   TFunctionName extends 'minInvest',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'minInvest',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"name"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"name"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenName<
+export function useVapeGameName<
   TFunctionName extends 'name',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'name',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"potValueETH"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"owner"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenPotValueEth<
-  TFunctionName extends 'potValueETH',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+export function useVapeGameOwner<
+  TFunctionName extends 'owner',
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
+    functionName: 'owner',
+    ...config,
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"potValueETH"`.
+ *
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
+ */
+export function useVapeGamePotValueEth<
+  TFunctionName extends 'potValueETH',
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
+) {
+  return useContractRead({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'potValueETH',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"rewardsContract"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"symbol"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenRewardsContract<
-  TFunctionName extends 'rewardsContract',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
->(
-  config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'rewardsContract',
-    ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
-}
-
-/**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"symbol"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenSymbol<
+export function useVapeGameSymbol<
   TFunctionName extends 'symbol',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'symbol',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"totalDividendsValueETH"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"totalDividendsValueETH"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenTotalDividendsValueEth<
+export function useVapeGameTotalDividendsValueEth<
   TFunctionName extends 'totalDividendsValueETH',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'totalDividendsValueETH',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"totalSupply"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"totalSupply"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenTotalSupply<
+export function useVapeGameTotalSupply<
   TFunctionName extends 'totalSupply',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'totalSupply',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"vapeTokenPrice"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"vapeTokenPrice"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenVapeTokenPrice<
+export function useVapeGameVapeTokenPrice<
   TFunctionName extends 'vapeTokenPrice',
-  TSelectData = ReadContractResult<typeof vapeTokenABI, TFunctionName>,
+  TSelectData = ReadContractResult<typeof vapeGameABI, TFunctionName>,
 >(
   config: Omit<
-    UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>,
+    UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractRead({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'vapeTokenPrice',
     ...config,
-  } as UseContractReadConfig<typeof vapeTokenABI, TFunctionName, TSelectData>)
+  } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenWrite<
+export function useVapeGameWrite<
   TFunctionName extends string,
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           string
         >['request']['abi'],
         TFunctionName,
         TMode
       > & { address?: Address; chainId?: TChainId }
-    : UseContractWriteConfig<typeof vapeTokenABI, TFunctionName, TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, TFunctionName, TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, TFunctionName, TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, TFunctionName, TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"approve"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"approve"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenApprove<
+export function useVapeGameApprove<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'approve'
         >['request']['abi'],
         'approve',
         TMode
       > & { address?: Address; chainId?: TChainId; functionName?: 'approve' }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'approve', TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'approve', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'approve'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'approve', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'approve', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'approve',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"decreaseAllowance"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decreaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenDecreaseAllowance<
+export function useVapeGameDecreaseAllowance<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'decreaseAllowance'
         >['request']['abi'],
         'decreaseAllowance',
@@ -1057,38 +905,34 @@ export function useVapeTokenDecreaseAllowance<
         chainId?: TChainId
         functionName?: 'decreaseAllowance'
       }
-    : UseContractWriteConfig<
-        typeof vapeTokenABI,
-        'decreaseAllowance',
-        TMode
-      > & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'decreaseAllowance', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'decreaseAllowance'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'decreaseAllowance', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'decreaseAllowance', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'decreaseAllowance',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"increaseAllowance"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"increaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenIncreaseAllowance<
+export function useVapeGameIncreaseAllowance<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'increaseAllowance'
         >['request']['abi'],
         'increaseAllowance',
@@ -1098,71 +942,34 @@ export function useVapeTokenIncreaseAllowance<
         chainId?: TChainId
         functionName?: 'increaseAllowance'
       }
-    : UseContractWriteConfig<
-        typeof vapeTokenABI,
-        'increaseAllowance',
-        TMode
-      > & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'increaseAllowance', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'increaseAllowance'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'increaseAllowance', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'increaseAllowance', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'increaseAllowance',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"pause"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"payMyDividend"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenPause<
+export function useVapeGamePayMyDividend<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
-          'pause'
-        >['request']['abi'],
-        'pause',
-        TMode
-      > & { address?: Address; chainId?: TChainId; functionName?: 'pause' }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'pause', TMode> & {
-        abi?: never
-        address?: never
-        chainId?: TChainId
-        functionName?: 'pause'
-      } = {} as any,
-) {
-  return useContractWrite<typeof vapeTokenABI, 'pause', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'pause',
-    ...config,
-  } as any)
-}
-
-/**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"payMyDividend"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenPayMyDividend<
-  TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
->(
-  config: TMode extends 'prepared'
-    ? UseContractWriteConfig<
-        PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'payMyDividend'
         >['request']['abi'],
         'payMyDividend',
@@ -1172,67 +979,100 @@ export function useVapeTokenPayMyDividend<
         chainId?: TChainId
         functionName?: 'payMyDividend'
       }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'payMyDividend', TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'payMyDividend', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'payMyDividend'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'payMyDividend', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'payMyDividend', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'payMyDividend',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"paydDevFee"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"paydDevFee"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenPaydDevFee<
+export function useVapeGamePaydDevFee<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'paydDevFee'
         >['request']['abi'],
         'paydDevFee',
         TMode
       > & { address?: Address; chainId?: TChainId; functionName?: 'paydDevFee' }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'paydDevFee', TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'paydDevFee', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'paydDevFee'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'paydDevFee', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'paydDevFee', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'paydDevFee',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"takeAVapeHit"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"startGame"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenTakeAVapeHit<
+export function useVapeGameStartGame<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
+          'startGame'
+        >['request']['abi'],
+        'startGame',
+        TMode
+      > & { address?: Address; chainId?: TChainId; functionName?: 'startGame' }
+    : UseContractWriteConfig<typeof vapeGameABI, 'startGame', TMode> & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'startGame'
+      } = {} as any,
+) {
+  return useContractWrite<typeof vapeGameABI, 'startGame', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
+    functionName: 'startGame',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeAVapeHit"`.
+ *
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
+ */
+export function useVapeGameTakeAVapeHit<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof vapeGameAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof vapeGameABI,
           'takeAVapeHit'
         >['request']['abi'],
         'takeAVapeHit',
@@ -1242,34 +1082,34 @@ export function useVapeTokenTakeAVapeHit<
         chainId?: TChainId
         functionName?: 'takeAVapeHit'
       }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'takeAVapeHit', TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'takeAVapeHit', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'takeAVapeHit'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'takeAVapeHit', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'takeAVapeHit', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'takeAVapeHit',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"takeTheLastHit"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeTheLastHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenTakeTheLastHit<
+export function useVapeGameTakeTheLastHit<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'takeTheLastHit'
         >['request']['abi'],
         'takeTheLastHit',
@@ -1279,67 +1119,67 @@ export function useVapeTokenTakeTheLastHit<
         chainId?: TChainId
         functionName?: 'takeTheLastHit'
       }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'takeTheLastHit', TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'takeTheLastHit', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'takeTheLastHit'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'takeTheLastHit', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'takeTheLastHit', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'takeTheLastHit',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"transfer"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenTransfer<
+export function useVapeGameTransfer<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'transfer'
         >['request']['abi'],
         'transfer',
         TMode
       > & { address?: Address; chainId?: TChainId; functionName?: 'transfer' }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'transfer', TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'transfer', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'transfer'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'transfer', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'transfer', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'transfer',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"transferFrom"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferFrom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenTransferFrom<
+export function useVapeGameTransferFrom<
   TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
+  TChainId extends number = keyof typeof vapeGameAddress,
 >(
   config: TMode extends 'prepared'
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
-          typeof vapeTokenABI,
+          typeof vapeGameABI,
           'transferFrom'
         >['request']['abi'],
         'transferFrom',
@@ -1349,335 +1189,283 @@ export function useVapeTokenTransferFrom<
         chainId?: TChainId
         functionName?: 'transferFrom'
       }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'transferFrom', TMode> & {
+    : UseContractWriteConfig<typeof vapeGameABI, 'transferFrom', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
         functionName?: 'transferFrom'
       } = {} as any,
 ) {
-  return useContractWrite<typeof vapeTokenABI, 'transferFrom', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+  return useContractWrite<typeof vapeGameABI, 'transferFrom', TMode>({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'transferFrom',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"unpause"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenUnpause<
-  TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof vapeTokenAddress,
->(
-  config: TMode extends 'prepared'
-    ? UseContractWriteConfig<
-        PrepareWriteContractResult<
-          typeof vapeTokenABI,
-          'unpause'
-        >['request']['abi'],
-        'unpause',
-        TMode
-      > & { address?: Address; chainId?: TChainId; functionName?: 'unpause' }
-    : UseContractWriteConfig<typeof vapeTokenABI, 'unpause', TMode> & {
-        abi?: never
-        address?: never
-        chainId?: TChainId
-        functionName?: 'unpause'
-      } = {} as any,
-) {
-  return useContractWrite<typeof vapeTokenABI, 'unpause', TMode>({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'unpause',
-    ...config,
-  } as any)
-}
-
-/**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function usePrepareVapeTokenWrite<TFunctionName extends string>(
+export function usePrepareVapeGameWrite<TFunctionName extends string>(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, TFunctionName>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, TFunctionName>,
     'abi' | 'address'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, TFunctionName>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, TFunctionName>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"approve"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"approve"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenApprove(
+export function usePrepareVapeGameApprove(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'approve'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'approve'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'approve',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'approve'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'approve'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"decreaseAllowance"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decreaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenDecreaseAllowance(
+export function usePrepareVapeGameDecreaseAllowance(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'decreaseAllowance'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'decreaseAllowance'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'decreaseAllowance',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'decreaseAllowance'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'decreaseAllowance'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"increaseAllowance"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"increaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenIncreaseAllowance(
+export function usePrepareVapeGameIncreaseAllowance(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'increaseAllowance'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'increaseAllowance'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'increaseAllowance',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'increaseAllowance'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'increaseAllowance'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"pause"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"payMyDividend"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenPause(
+export function usePrepareVapeGamePayMyDividend(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'pause'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'payMyDividend'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'pause',
-    ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'pause'>)
-}
-
-/**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"payMyDividend"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function usePrepareVapeTokenPayMyDividend(
-  config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'payMyDividend'>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'payMyDividend',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'payMyDividend'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'payMyDividend'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"paydDevFee"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"paydDevFee"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenPaydDevFee(
+export function usePrepareVapeGamePaydDevFee(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'paydDevFee'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'paydDevFee'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'paydDevFee',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'paydDevFee'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'paydDevFee'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"takeAVapeHit"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"startGame"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenTakeAVapeHit(
+export function usePrepareVapeGameStartGame(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'takeAVapeHit'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'startGame'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
+    functionName: 'startGame',
+    ...config,
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'startGame'>)
+}
+
+/**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeAVapeHit"`.
+ *
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
+ */
+export function usePrepareVapeGameTakeAVapeHit(
+  config: Omit<
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'takeAVapeHit'>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
+) {
+  return usePrepareContractWrite({
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'takeAVapeHit',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'takeAVapeHit'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'takeAVapeHit'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"takeTheLastHit"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeTheLastHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenTakeTheLastHit(
+export function usePrepareVapeGameTakeTheLastHit(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'takeTheLastHit'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'takeTheLastHit'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'takeTheLastHit',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'takeTheLastHit'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'takeTheLastHit'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"transfer"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenTransfer(
+export function usePrepareVapeGameTransfer(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'transfer'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'transfer'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'transfer',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'transfer'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'transfer'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"transferFrom"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferFrom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenTransferFrom(
+export function usePrepareVapeGameTransferFrom(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'transferFrom'>,
+    UsePrepareContractWriteConfig<typeof vapeGameABI, 'transferFrom'>,
     'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     functionName: 'transferFrom',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'transferFrom'>)
+  } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'transferFrom'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeTokenABI}__ and `functionName` set to `"unpause"`.
+ * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function usePrepareVapeTokenUnpause(
+export function useVapeGameEvent<TEventName extends string>(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof vapeTokenABI, 'unpause'>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
-) {
-  return usePrepareContractWrite({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
-    functionName: 'unpause',
-    ...config,
-  } as UsePrepareContractWriteConfig<typeof vapeTokenABI, 'unpause'>)
-}
-
-/**
- * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeTokenABI}__.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
- */
-export function useVapeTokenEvent<TEventName extends string>(
-  config: Omit<
-    UseContractEventConfig<typeof vapeTokenABI, TEventName>,
+    UseContractEventConfig<typeof vapeGameABI, TEventName>,
     'abi' | 'address'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractEvent({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     ...config,
-  } as UseContractEventConfig<typeof vapeTokenABI, TEventName>)
+  } as UseContractEventConfig<typeof vapeGameABI, TEventName>)
 }
 
 /**
- * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeTokenABI}__ and `eventName` set to `"Approval"`.
+ * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"Approval"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenApprovalEvent(
+export function useVapeGameApprovalEvent(
   config: Omit<
-    UseContractEventConfig<typeof vapeTokenABI, 'Approval'>,
+    UseContractEventConfig<typeof vapeGameABI, 'Approval'>,
     'abi' | 'address' | 'eventName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractEvent({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     eventName: 'Approval',
     ...config,
-  } as UseContractEventConfig<typeof vapeTokenABI, 'Approval'>)
+  } as UseContractEventConfig<typeof vapeGameABI, 'Approval'>)
 }
 
 /**
- * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeTokenABI}__ and `eventName` set to `"Transfer"`.
+ * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"Transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x38A305d6250895b9d3f496305F4c2eC8265FD7aA)
+ * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x64d80a46C4183A3B9CBca6dAEA8B3397C43FA13A)
  */
-export function useVapeTokenTransferEvent(
+export function useVapeGameTransferEvent(
   config: Omit<
-    UseContractEventConfig<typeof vapeTokenABI, 'Transfer'>,
+    UseContractEventConfig<typeof vapeGameABI, 'Transfer'>,
     'abi' | 'address' | 'eventName'
-  > & { chainId?: keyof typeof vapeTokenAddress } = {} as any,
+  > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
   return useContractEvent({
-    abi: vapeTokenABI,
-    address: vapeTokenAddress[5],
+    abi: vapeGameABI,
+    address: vapeGameAddress[5],
     eventName: 'Transfer',
     ...config,
-  } as UseContractEventConfig<typeof vapeTokenABI, 'Transfer'>)
+  } as UseContractEventConfig<typeof vapeGameABI, 'Transfer'>)
 }
 
 /**

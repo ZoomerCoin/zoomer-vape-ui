@@ -3,34 +3,54 @@ import {
   Center,
   Flex,
   Heading,
+  Link,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Stat,
   StatLabel,
   StatNumber,
+  Text,
   VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import {
-  usePrepareVapeTokenPayMyDividend,
-  useVapeTokenGetMyDividend,
-  useVapeTokenIsPaused,
-  useVapeTokenLastPurchasedAddress,
-  useVapeTokenLastPurchasedTime,
-  useVapeTokenMinInvest,
-  useVapeTokenPayMyDividend,
-  useVapeTokenPotValueEth,
-  useVapeTokenTakeAVapeHit,
+  usePrepareVapeGamePayMyDividend,
+  useVapeGameGetMyDividend,
+  useVapeGameIsPaused,
+  useVapeGameLastPurchasedAddress,
+  useVapeGameLastPurchasedTime,
+  useVapeGameMinInvest,
+  useVapeGamePayMyDividend,
+  useVapeGamePotValueEth,
+  useVapeGameTakeAVapeHit,
 } from "../generated";
 import { formatEther } from "viem";
-import { useAccount } from "wagmi";
+import { useAccount, useWalletClient } from "wagmi";
+import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
+import { useState } from "react";
 
 export const GameUI = () => {
   const { address } = useAccount();
   console.log("address: ", address);
   return (
     <VStack align={"stretch"}>
-      <Center pb={4}>
-        <Heading>/VAPE_FOMO</Heading>
+      <Center>
+        <Heading>$VAPE</Heading>
+      </Center>
+      <Center>
+        <Heading as="h4" size="md">
+          we str8 vapin belee dat
+        </Heading>
       </Center>
       <Flex>
+        <GameDescription />
+      </Flex>
+      <Flex pt={4}>
         <CurrentWinner />
       </Flex>
       <Flex>
@@ -38,7 +58,7 @@ export const GameUI = () => {
         <TimeLeft />
       </Flex>
       <Flex>
-        <BuyIn />
+        <TakeAHit />
       </Flex>
       <Flex>{address ? <Dividend address={address} /> : <></>}</Flex>
     </VStack>
@@ -46,7 +66,7 @@ export const GameUI = () => {
 };
 
 const CurrentWinner = () => {
-  const { data, isSuccess } = useVapeTokenLastPurchasedAddress();
+  const { data, isSuccess } = useVapeGameLastPurchasedAddress();
 
   return (
     <Stat>
@@ -57,7 +77,7 @@ const CurrentWinner = () => {
 };
 
 const Jackpot = () => {
-  const { data, isSuccess } = useVapeTokenPotValueEth();
+  const { data, isSuccess } = useVapeGamePotValueEth();
 
   return (
     <Stat>
@@ -68,7 +88,7 @@ const Jackpot = () => {
 };
 
 const TimeLeft = () => {
-  const { data, isSuccess } = useVapeTokenLastPurchasedTime();
+  const { data, isSuccess } = useVapeGameLastPurchasedTime();
 
   const toHHMMSS = (secNum: number): string => {
     let hours = Math.floor(secNum / 3600).toString();
@@ -103,29 +123,75 @@ const TimeLeft = () => {
   );
 };
 
-const BuyIn = () => {
-  const { data: isPaused } = useVapeTokenIsPaused();
-  const { data: minInvest, isSuccess } = useVapeTokenMinInvest();
-  const { write } = useVapeTokenTakeAVapeHit();
+const TakeAHit = () => {
+  const { data: isPaused } = useVapeGameIsPaused();
+  const { data: minInvest, isSuccess: isSuccessMinInvest } =
+    useVapeGameMinInvest();
+  const { writeAsync, isLoading: isLoadingTakeAHit } =
+    useVapeGameTakeAVapeHit();
+  const addRecentTransaction = useAddRecentTransaction();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [txHash, setTxHash] = useState("");
+
   return (
     <>
       <Stat>
         <StatLabel>Ticket Price</StatLabel>
         <StatNumber>
-          {isSuccess ? formatEther(minInvest!) + " ETH" : "..."}
+          {isSuccessMinInvest ? formatEther(minInvest!) + " ETH" : "..."}
         </StatNumber>
       </Stat>
       <Center width={"50%"}>
         <Button
           colorScheme="pink"
           width="100%"
-          isDisabled={!write || !minInvest || isPaused}
-          onClick={() => write({ value: minInvest })}
+          isDisabled={!writeAsync || !minInvest || isPaused}
+          isLoading={isLoadingTakeAHit}
+          onClick={async () => {
+            const res = await writeAsync({ value: minInvest });
+            addRecentTransaction({
+              hash: res.hash,
+              description: "Take a Hit",
+            });
+            setTxHash(res.hash);
+            onOpen();
+          }}
         >
-          Take a Hit
+          TAKE A HIT
         </Button>
       </Center>
+      <HitTakenModal isOpen={isOpen} onClose={onClose} txHash={txHash} />
     </>
+  );
+};
+
+type TxModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  txHash: string;
+};
+
+const HitTakenModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
+  const { data: wallet } = useWalletClient();
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>YOU TOOK A FAT HIT</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <video autoPlay loop src={require("../../media/vape.mp4")} />
+        </ModalBody>
+        <ModalFooter>
+          <Link
+            href={`${wallet?.chain.blockExplorers?.etherscan?.url}/tx/${txHash}`}
+            isExternal
+          >
+            Peep Game
+          </Link>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   );
 };
 
@@ -134,11 +200,14 @@ type DividendProps = {
 };
 
 const Dividend = ({ address }: DividendProps) => {
-  const { data: myDividend, isSuccess } = useVapeTokenGetMyDividend({
+  const { data: myDividend, isSuccess } = useVapeGameGetMyDividend({
     args: [address],
   });
-  const { config } = usePrepareVapeTokenPayMyDividend();
-  const { write } = useVapeTokenPayMyDividend(config);
+  const { config } = usePrepareVapeGamePayMyDividend();
+  const { writeAsync, isLoading } = useVapeGamePayMyDividend(config);
+  const addRecentTransaction = useAddRecentTransaction();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [txHash, setTxHash] = useState("");
 
   return (
     <>
@@ -152,12 +221,70 @@ const Dividend = ({ address }: DividendProps) => {
         <Button
           colorScheme="blue"
           width={"100%"}
-          isDisabled={!write || myDividend === BigInt(0)}
-          onClick={() => write?.()}
+          isDisabled={!writeAsync || myDividend === BigInt(0)}
+          isLoading={isLoading}
+          onClick={async () => {
+            const res = await writeAsync?.();
+            if (res) {
+              addRecentTransaction({
+                hash: res.hash,
+                description: "Get My Dividend",
+              });
+              setTxHash(res.hash);
+            }
+            onOpen();
+          }}
         >
-          Get My Dividend
+          GET MY DIVIDEND
         </Button>
       </Center>
+      <DividendModal isOpen={isOpen} onClose={onClose} txHash={txHash} />
     </>
+  );
+};
+
+const DividendModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
+  const { data: wallet } = useWalletClient();
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>YOU COLLECTED YOUR DIVIDEND</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <video autoPlay loop src={require("../../media/dance.mp4")} />
+        </ModalBody>
+        <ModalFooter>
+          <Link
+            href={`${wallet?.chain.blockExplorers?.etherscan?.url}/tx/${txHash}`}
+            isExternal
+          >
+            Peep Game
+          </Link>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+const GameDescription = () => {
+  return (
+    <Text as="b">
+      {"it's"} smooth af:
+      <br />
+      1. Hit the $VAPE for your chance to win the Bussin Oil
+      <br />
+      2. The earlier you hit the vape the more $VAPE you get
+      <br />
+      3. All $VAPE holders get a share of all new hits after them (the earlier
+      you hit the more you get).
+      <br />
+      4. With every Hit, the Battery resets and the Hit price increases.
+      <br />
+      5. The last person to take a hit b4 the battery resets wins the Bussin Oil
+      <br />
+      you CANNOT buy $VAPE on an exchange! you must play the game to get it!
+    </Text>
   );
 };
