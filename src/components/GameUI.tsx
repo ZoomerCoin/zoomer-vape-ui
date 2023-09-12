@@ -84,7 +84,7 @@ const CurrentWinner = () => {
 };
 
 const Jackpot = () => {
-  const { data, isSuccess } = useVapeGamePotValueEth();
+  const { data, isSuccess } = useVapeGamePotValueEth({ watch: true });
 
   return (
     <Stat>
@@ -95,7 +95,7 @@ const Jackpot = () => {
 };
 
 const TimeLeft = () => {
-  const { data, isSuccess } = useVapeGameLastPurchasedTime();
+  const { data, isSuccess } = useVapeGameLastPurchasedTime({ watch: true });
 
   const toHHMMSS = (secNum: number): string => {
     let hours = Math.floor(secNum / 3600).toString();
@@ -209,6 +209,7 @@ type DividendProps = {
 const Dividend = ({ address }: DividendProps) => {
   const { data: myDividend, isSuccess } = useVapeGameGetMyDividend({
     args: [address],
+    watch: true,
   });
   const { config } = usePrepareVapeGamePayMyDividend();
   const { writeAsync, isLoading } = useVapeGamePayMyDividend(config);
