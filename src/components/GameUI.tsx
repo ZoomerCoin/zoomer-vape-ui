@@ -36,7 +36,6 @@ import { useState } from "react";
 
 export const GameUI = () => {
   const { address } = useAccount();
-  console.log("address: ", address);
   return (
     <VStack align={"stretch"}>
       <Center>
@@ -57,10 +56,18 @@ export const GameUI = () => {
         <Jackpot />
         <TimeLeft />
       </Flex>
-      <Flex>
-        <TakeAHit />
-      </Flex>
-      <Flex>{address ? <Dividend address={address} /> : <></>}</Flex>
+      {address ? (
+        <>
+          <Flex>
+            <TakeAHit />
+          </Flex>
+          <Flex>
+            <Dividend address={address} />
+          </Flex>
+        </>
+      ) : (
+        <Heading pt={6}>CONNECT YOUR WALLET TO PLAY</Heading>
+      )}
     </VStack>
   );
 };
