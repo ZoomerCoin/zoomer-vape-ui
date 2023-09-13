@@ -12,6 +12,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Stat,
+  StatHelpText,
   StatLabel,
   StatNumber,
   Text,
@@ -21,18 +22,24 @@ import {
 import {
   usePrepareVapeGamePayMyDividend,
   useVapeGameGetMyDividend,
+  useVapeGameHasEnoughZoomer,
   useVapeGameIsPaused,
   useVapeGameLastPurchasedAddress,
   useVapeGameLastPurchasedTime,
   useVapeGameMinInvest,
+  useVapeGameNumHits,
   useVapeGamePayMyDividend,
   useVapeGamePotValueEth,
   useVapeGameTakeAVapeHit,
+  useZoomerCoinBalanceOf,
 } from "../generated";
-import { formatEther } from "viem";
+import { Address, formatEther } from "viem";
 import { useAccount, useWalletClient } from "wagmi";
 import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
+
+const BUY_ZOOMER_LINK =
+  "https://app.uniswap.org/#/tokens/ethereum/0x0d505c03d30e65f6e9b4ef88855a47a89e4b7676";
 
 export const GameUI = () => {
   const { address } = useAccount();
@@ -59,7 +66,7 @@ export const GameUI = () => {
       {address ? (
         <>
           <Flex>
-            <TakeAHit />
+            <TakeAHit address={address} />
           </Flex>
           <Flex>
             <Dividend address={address} />
@@ -73,12 +80,17 @@ export const GameUI = () => {
 };
 
 const CurrentWinner = () => {
-  const { data, isSuccess } = useVapeGameLastPurchasedAddress();
+  const { data: lastPurchased, isSuccess: lastPurchasedIsSuccess } =
+    useVapeGameLastPurchasedAddress();
+  const { data: numHits, isSuccess: numHitsIsSuccess } = useVapeGameNumHits();
 
   return (
     <Stat>
       <StatLabel>Current Winner</StatLabel>
-      <StatNumber>{isSuccess ? data : "..."}</StatNumber>
+      <StatNumber>{lastPurchasedIsSuccess ? lastPurchased : "..."}</StatNumber>
+      <StatHelpText>
+        {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
+      </StatHelpText>
     </Stat>
   );
 };
@@ -130,12 +142,21 @@ const TimeLeft = () => {
   );
 };
 
-const TakeAHit = () => {
+type TakeAHitProps = {
+  address: Address;
+};
+
+const TakeAHit = ({ address }: TakeAHitProps) => {
   const { data: isPaused } = useVapeGameIsPaused();
   const { data: minInvest, isSuccess: isSuccessMinInvest } =
-    useVapeGameMinInvest();
+    useVapeGameMinInvest({ watch: true });
   const { writeAsync, isLoading: isLoadingTakeAHit } =
     useVapeGameTakeAVapeHit();
+  const { data: hasEnough, isSuccess: isSuccessHasEnough } =
+    useVapeGameHasEnoughZoomer({ args: [address], watch: true });
+  const { data: balance, isSuccess: isSuccessBalance } = useZoomerCoinBalanceOf(
+    { args: [address], watch: true }
+  );
   const addRecentTransaction = useAddRecentTransaction();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [txHash, setTxHash] = useState("");
@@ -149,23 +170,35 @@ const TakeAHit = () => {
         </StatNumber>
       </Stat>
       <Center width={"50%"}>
-        <Button
-          colorScheme="pink"
-          width="100%"
-          isDisabled={!writeAsync || !minInvest || isPaused}
-          isLoading={isLoadingTakeAHit}
-          onClick={async () => {
-            const res = await writeAsync({ value: minInvest });
-            addRecentTransaction({
-              hash: res.hash,
-              description: "Take a Hit",
-            });
-            setTxHash(res.hash);
-            onOpen();
-          }}
-        >
-          TAKE A HIT
-        </Button>
+        {isSuccessHasEnough && hasEnough ? (
+          <Button
+            colorScheme="pink"
+            width="100%"
+            isDisabled={!writeAsync || !minInvest || isPaused}
+            isLoading={isLoadingTakeAHit}
+            onClick={async () => {
+              const res = await writeAsync({ value: minInvest });
+              addRecentTransaction({
+                hash: res.hash,
+                description: "Take a Hit",
+              });
+              setTxHash(res.hash);
+              onOpen();
+            }}
+          >
+            TAKE A HIT
+          </Button>
+        ) : (
+          <VStack>
+            <Text as="b">
+              not enough $ZOOMER! you need 10000, you have{" "}
+              {isSuccessBalance ? balance!.toString() : "..."}!{" "}
+              <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
+                BUY SOME!
+              </Link>
+            </Text>
+          </VStack>
+        )}
       </Center>
       <HitTakenModal isOpen={isOpen} onClose={onClose} txHash={txHash} />
     </>
@@ -203,7 +236,7 @@ const HitTakenModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
 };
 
 type DividendProps = {
-  address: `0x${string}`;
+  address: Address;
 };
 
 const Dividend = ({ address }: DividendProps) => {
@@ -291,6 +324,12 @@ const GameDescription = () => {
       4. With every Hit, the Battery resets and the Hit price increases.
       <br />
       5. The last person to take a hit b4 the battery resets wins the Bussin Oil
+      <br />
+      6. The first 50 buys require 10000 $ZOOMER,{" "}
+      <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
+        buy it here!
+      </Link>
+      <br />
       <br />
       you CANNOT buy $VAPE on an exchange! you must play the game to get it!
     </Text>
