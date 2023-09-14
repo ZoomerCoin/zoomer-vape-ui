@@ -85,13 +85,22 @@ const CurrentWinner = () => {
   const { data: lastPurchased, isSuccess: lastPurchasedIsSuccess } =
     useVapeGameLastPurchasedAddress();
   const { data: numHits, isSuccess: numHitsIsSuccess } = useVapeGameNumHits();
-
+  const need = (
+    <>
+      , need{" "}
+      <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
+        $ZOOMER
+      </Link>{" "}
+      to take a hit
+    </>
+  );
   return (
     <Stat>
       <StatLabel>Current Winner</StatLabel>
       <StatNumber>{lastPurchasedIsSuccess ? lastPurchased : "..."}</StatNumber>
       <StatHelpText>
         {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
+        {numHitsIsSuccess ?? numHits! < 50 ? need : ""}
       </StatHelpText>
     </Stat>
   );
@@ -127,8 +136,6 @@ const TimeLeft = () => {
     const winningTime = data + BigInt(86400);
     const now = Math.floor(Date.now() / 1000);
     let timeLeft = winningTime - BigInt(now);
-    console.log("last purchased time: ", data);
-    console.log("timeLeft: ", timeLeft);
     if (timeLeft < 0) {
       timeLeft = BigInt(0);
     }
@@ -328,7 +335,7 @@ const GameDescription = () => {
       <br />
       5. The last person to take a hit b4 the battery resets wins the Bussin Oil
       <br />
-      6. The first 50 buys require 10000 $ZOOMER,{" "}
+      6. The first 50 hits require at least 10,000 $ZOOMER,{" "}
       <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
         buy it here!
       </Link>
