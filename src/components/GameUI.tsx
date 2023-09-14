@@ -96,7 +96,7 @@ const CurrentWinner = () => {
   );
   return (
     <Stat>
-      <StatLabel>Current Winner</StatLabel>
+      <StatLabel>Last Hit By</StatLabel>
       <StatNumber>{lastPurchasedIsSuccess ? lastPurchased : "..."}</StatNumber>
       <StatHelpText>
         {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
@@ -111,7 +111,7 @@ const Jackpot = () => {
 
   return (
     <Stat>
-      <StatLabel>Current Jackpot</StatLabel>
+      <StatLabel>Bussin Oil Value</StatLabel>
       <StatNumber>{isSuccess ? formatEther(data!) + " ETH" : "..."}</StatNumber>
     </Stat>
   );
@@ -145,7 +145,7 @@ const TimeLeft = () => {
 
   return (
     <Stat>
-      <StatLabel>Time Until Jackpot</StatLabel>
+      <StatLabel>Time Until Battery Dies</StatLabel>
       <StatNumber>{isSuccess ? formatData(data!) : "..."}</StatNumber>
     </Stat>
   );
@@ -173,7 +173,7 @@ const TakeAHit = ({ address }: TakeAHitProps) => {
   return (
     <>
       <Stat>
-        <StatLabel>Ticket Price</StatLabel>
+        <StatLabel>Hit Price</StatLabel>
         <StatNumber>
           {isSuccessMinInvest ? formatEther(minInvest!) + " ETH" : "..."}
         </StatNumber>
