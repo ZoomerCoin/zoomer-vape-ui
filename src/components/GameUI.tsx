@@ -337,7 +337,7 @@ const GameDescription = () => {
       you CANNOT buy $VAPE on an exchange! you must play the game to get it!
       <br />
       <br />
-      WARNING: this is an addictive af degen ponzinomic game. the code is safu
+      WARNING: this is an addictive af degen ponzinomic game. the code is safu{" "}
       <Link
         href={`${
           wallet?.chain.blockExplorers?.etherscan?.url ??
@@ -346,7 +346,7 @@ const GameDescription = () => {
           wallet?.chain.id
             ? vapeGameAddress[wallet?.chain.id as keyof typeof vapeGameAddress]
             : vapeGameAddress[5]
-        }`}
+        }#code`}
         isExternal
         color="teal.500"
       >
