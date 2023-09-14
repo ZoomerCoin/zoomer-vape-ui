@@ -32,11 +32,13 @@ import {
   useVapeGamePotValueEth,
   useVapeGameTakeAVapeHit,
   useZoomerCoinBalanceOf,
+  vapeGameAddress,
 } from "../generated";
 import { Address, formatEther } from "viem";
-import { useAccount, useWalletClient } from "wagmi";
+import { mainnet, useAccount, useWalletClient } from "wagmi";
 import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
+import { goerli } from "wagmi/dist/chains";
 
 const BUY_ZOOMER_LINK =
   "https://app.uniswap.org/#/tokens/ethereum/0x0d505c03d30e65f6e9b4ef88855a47a89e4b7676";
@@ -310,6 +312,7 @@ const DividendModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
 };
 
 const GameDescription = () => {
+  const { data: wallet } = useWalletClient();
   return (
     <Text as="b">
       {"it's"} smooth af:
@@ -332,6 +335,24 @@ const GameDescription = () => {
       <br />
       <br />
       you CANNOT buy $VAPE on an exchange! you must play the game to get it!
+      <br />
+      <br />
+      WARNING: this is an addictive af degen ponzinomic game. the code is safu
+      <Link
+        href={`${
+          wallet?.chain.blockExplorers?.etherscan?.url ??
+          goerli.blockExplorers.etherscan.url
+        }/address/${
+          wallet?.chain.id
+            ? vapeGameAddress[wallet?.chain.id as keyof typeof vapeGameAddress]
+            : vapeGameAddress[5]
+        }`}
+        isExternal
+        color="teal.500"
+      >
+        (read it here)
+      </Link>{" "}
+      but has not been audited. play at your own risk!
     </Text>
   );
 };
