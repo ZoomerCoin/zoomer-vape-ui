@@ -335,7 +335,7 @@ const GameDescription = () => {
       <br />
       5. The last person to take a hit b4 the battery resets wins the Bussin Oil
       <br />
-      6. The first 50 hits require at least 10,000 $ZOOMER,{" "}
+      6. The first 50 hits require at least 10,000 $ZOOMER in your wallet,{" "}
       <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
         buy it here!
       </Link>
