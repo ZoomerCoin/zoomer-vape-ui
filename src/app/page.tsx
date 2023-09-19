@@ -9,6 +9,7 @@ import {
   LinkOverlay,
   LinkBox,
   Image,
+  Center,
 } from "@chakra-ui/react";
 import { NavBar } from "../components/NavBar";
 import { GameUI } from "../components/GameUI";
@@ -21,6 +22,7 @@ const Page = () => {
     <>
       <VStack spacing={4} align="stretch" p={4}>
         <NavBar />
+        <Center><Image boxSize='100px' src="/zoomer.jpg" alt="zoomer" /></Center>
         <Flex>
           <Spacer />
           <Box width={640}>
