@@ -27,6 +27,7 @@ import {
   useVapeGameIsPaused,
   useVapeGameLastPurchasedAddress,
   useVapeGameLastPurchasedTime,
+  useVapeGameLottoValueEth,
   useVapeGameMinInvest,
   useVapeGameNumHits,
   useVapeGamePayMyDividend,
@@ -61,6 +62,9 @@ export const GameUI = () => {
       </Flex>
       <Flex pt={4}>
         <CurrentWinner />
+      </Flex>
+      <Flex>
+        <RandomWinner />
       </Flex>
       <Flex>
         <Jackpot />
@@ -105,6 +109,20 @@ const CurrentWinner = () => {
         {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
         {numHitsIsSuccess ?? numHits! < 50 ? need : ""}
       </StatHelpText>
+    </Stat>
+  );
+};
+
+const RandomWinner = () => {
+  const { data: lottoValue, isSuccess: lottoIsSuccess } =
+    useVapeGameLottoValueEth({ watch: true });
+  return (
+    <Stat>
+      <StatLabel>Random Bussin Winner Pot</StatLabel>
+      <StatNumber>
+        {lottoIsSuccess ? formatEther(lottoValue!) + " ETH" : "..."}
+      </StatNumber>
+      <StatHelpText>Do you feel lucky?? Check back when the game ends...</StatHelpText>
     </Stat>
   );
 };
@@ -349,6 +367,17 @@ const GameDescription = () => {
       <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
         buy it here!
       </Link>
+      <br />
+      7. ONE random lucky winner gets a nice payout from the final pot (5% of
+      the total). how is it random? our gigabrain devs use{" "}
+      <Link
+        href="https://docs.chain.link/vrf/v2/introduction"
+        isExternal
+        color="teal.500"
+      >
+        Chainlink VRF
+      </Link>{" "}
+      for provably fair randomness, belee dat!
       <br />
       <br />
       you CANNOT buy $VAPE on an exchange! you must play the game to get it!
