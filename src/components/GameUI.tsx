@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import {
   usePrepareVapeGamePayMyDividend,
+  useVapeGameGameTime,
   useVapeGameGetMyDividend,
   useVapeGameHasEnoughZoomer,
   useVapeGameIsPaused,
@@ -118,7 +119,10 @@ const Jackpot = () => {
 };
 
 const TimeLeft = () => {
-  const { data, isSuccess } = useVapeGameLastPurchasedTime({ watch: true });
+  const { data: lastPurchasedTime, isSuccess: lastPurchaseIsSuccess } =
+    useVapeGameLastPurchasedTime({ watch: true });
+  const { data: gameTime, isSuccess: gameTimeIsSuccess } =
+    useVapeGameGameTime();
 
   const toHHMMSS = (secNum: number): string => {
     let hours = Math.floor(secNum / 3600).toString();
@@ -132,8 +136,8 @@ const TimeLeft = () => {
     return hours + " hours " + minutes + " minutes " + seconds + " seconds";
   };
 
-  const formatData = (data: bigint): string => {
-    const winningTime = data + BigInt(86400);
+  const formatData = (data: bigint, gameTime: bigint): string => {
+    const winningTime = data + gameTime;
     const now = Math.floor(Date.now() / 1000);
     let timeLeft = winningTime - BigInt(now);
     if (timeLeft < 0) {
@@ -146,7 +150,11 @@ const TimeLeft = () => {
   return (
     <Stat>
       <StatLabel>Time Until Battery Dies</StatLabel>
-      <StatNumber>{isSuccess ? formatData(data!) : "..."}</StatNumber>
+      <StatNumber>
+        {lastPurchaseIsSuccess && gameTimeIsSuccess
+          ? formatData(lastPurchasedTime!, gameTime!)
+          : "..."}
+      </StatNumber>
     </Stat>
   );
 };
