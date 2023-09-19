@@ -264,8 +264,11 @@ const HitTakenModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
   const { data: wallet } = useWalletClient();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
+      <ModalOverlay
+        bg="blackAlpha.300"
+        backdropFilter="blur(10px) hue-rotate(90deg)"
+      />
+      <ModalContent backgroundColor="#FEFC52">
         <ModalHeader>YOU TOOK A FAT HIT</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -338,8 +341,11 @@ const DividendModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
+      <ModalOverlay
+        bg="blackAlpha.300"
+        backdropFilter="blur(10px) hue-rotate(90deg)"
+      />
+      <ModalContent backgroundColor="#FEFC52">
         <ModalHeader>YOU COLLECTED YOUR DIVIDEND</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
