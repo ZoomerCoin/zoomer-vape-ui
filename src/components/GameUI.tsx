@@ -84,8 +84,10 @@ export const GameUI = () => {
 
 const CurrentWinner = () => {
   const { data: lastPurchased, isSuccess: lastPurchasedIsSuccess } =
-    useVapeGameLastPurchasedAddress();
-  const { data: numHits, isSuccess: numHitsIsSuccess } = useVapeGameNumHits();
+    useVapeGameLastPurchasedAddress({ watch: true });
+  const { data: numHits, isSuccess: numHitsIsSuccess } = useVapeGameNumHits({
+    watch: true,
+  });
   const need = (
     <>
       , need{" "}
