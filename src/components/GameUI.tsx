@@ -1,5 +1,13 @@
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
   Button,
+  Card,
+  CardBody,
   Center,
   Flex,
   Heading,
@@ -48,41 +56,43 @@ const BUY_ZOOMER_LINK =
 export const GameUI = () => {
   const { address } = useAccount();
   return (
-    <VStack align={"stretch"}>
-      <Center>
-        <Heading>$VAPE</Heading>
-      </Center>
-      <Center>
-        <Heading as="h4" size="md">
-          we str8 vapin belee dat
-        </Heading>
-      </Center>
-      <Flex>
-        <GameDescription />
-      </Flex>
-      <Flex pt={4}>
-        <CurrentWinner />
-      </Flex>
-      <Flex>
-        <RandomWinner />
-      </Flex>
-      <Flex>
-        <Jackpot />
-        <TimeLeft />
-      </Flex>
-      {address ? (
-        <>
-          <Flex>
-            <TakeAHit address={address} />
+    <Card bg="#FEFC52" mt={4}>
+      <CardBody>
+        <VStack align={"stretch"}>
+          <Center>
+            <Heading>$VAPE</Heading>
+          </Center>
+          <Center>
+            <Heading as="h4" size="md">
+              we str8 vapin belee dat
+            </Heading>
+          </Center>
+          <GameDescription />
+          <Flex pt={4}>
+            <CurrentWinner />
           </Flex>
           <Flex>
-            <Dividend address={address} />
+            <RandomWinner />
           </Flex>
-        </>
-      ) : (
-        <Heading pt={6}>CONNECT YOUR WALLET TO PLAY</Heading>
-      )}
-    </VStack>
+          <Flex>
+            <Jackpot />
+            <TimeLeft />
+          </Flex>
+          {address ? (
+            <>
+              <Flex>
+                <TakeAHit address={address} />
+              </Flex>
+              <Flex>
+                <Dividend address={address} />
+              </Flex>
+            </>
+          ) : (
+            <Heading pt={6}>CONNECT YOUR WALLET TO PLAY</Heading>
+          )}
+        </VStack>
+      </CardBody>
+    </Card>
   );
 };
 
@@ -122,7 +132,9 @@ const RandomWinner = () => {
       <StatNumber>
         {lottoIsSuccess ? formatEther(lottoValue!) + " ETH" : "..."}
       </StatNumber>
-      <StatHelpText>Do you feel lucky?? Check back when the game ends...</StatHelpText>
+      <StatHelpText>
+        Do you feel lucky?? Check back when the game ends...
+      </StatHelpText>
     </Stat>
   );
 };
@@ -349,56 +361,75 @@ const DividendModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
 const GameDescription = () => {
   const { data: wallet } = useWalletClient();
   return (
-    <Text as="b">
-      {"it's"} smooth af:
-      <br />
-      1. Hit the $VAPE for your chance to win the Bussin Oil
-      <br />
-      2. The earlier you hit the vape the more $VAPE you get
-      <br />
-      3. All $VAPE holders get a share of all new hits after them (the earlier
-      you hit the more you get).
-      <br />
-      4. With every Hit, the Battery resets and the Hit price increases.
-      <br />
-      5. The last person to take a hit b4 the battery resets wins the Bussin Oil
-      <br />
-      6. The first 50 hits require at least 10,000 $ZOOMER in your wallet,{" "}
-      <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
-        buy it here!
-      </Link>
-      <br />
-      7. ONE random lucky winner gets a nice payout from the final pot (5% of
-      the total). how is it random? our gigabrain devs use{" "}
-      <Link
-        href="https://docs.chain.link/vrf/v2/introduction"
-        isExternal
-        color="teal.500"
-      >
-        Chainlink VRF
-      </Link>{" "}
-      for provably fair randomness, belee dat!
-      <br />
-      <br />
-      you CANNOT buy $VAPE on an exchange! you must play the game to get it!
-      <br />
-      <br />
-      WARNING: this is an addictive af degen ponzinomic game. the code is safu{" "}
-      <Link
-        href={`${
-          wallet?.chain.blockExplorers?.etherscan?.url ??
-          goerli.blockExplorers.etherscan.url
-        }/address/${
-          wallet?.chain.id
-            ? vapeGameAddress[wallet?.chain.id as keyof typeof vapeGameAddress]
-            : vapeGameAddress[5]
-        }#code`}
-        isExternal
-        color="teal.500"
-      >
-        (read it here)
-      </Link>{" "}
-      but has not been audited. play at your own risk!
-    </Text>
+    <Accordion allowToggle>
+      <AccordionItem>
+        <h2>
+          <AccordionButton width="100%">
+            <Box as="span" flex="1" textAlign="left">
+              <Text as="b">how does this work??</Text>
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+        </h2>
+        <AccordionPanel pb={4}>
+          <Text as="b">
+            {"it's"} smooth af:
+            <br />
+            1. Hit the $VAPE for your chance to win the Bussin Oil
+            <br />
+            2. The earlier you hit the vape the more $VAPE you get
+            <br />
+            3. All $VAPE holders get a share of all new hits after them (the
+            earlier you hit the more you get).
+            <br />
+            4. With every Hit, the Battery resets and the Hit price increases.
+            <br />
+            5. The last person to take a hit b4 the battery resets wins the
+            Bussin Oil
+            <br />
+            6. The first 50 hits require at least 10,000 $ZOOMER in your wallet,{" "}
+            <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
+              buy it here!
+            </Link>
+            <br />
+            7. ONE random lucky winner gets a nice payout from the final pot (5%
+            of the total). how is it random? our gigabrain devs use{" "}
+            <Link
+              href="https://docs.chain.link/vrf/v2/introduction"
+              isExternal
+              color="teal.500"
+            >
+              Chainlink VRF
+            </Link>{" "}
+            for provably fair randomness, belee dat!
+            <br />
+            <br />
+            you CANNOT buy $VAPE on an exchange! you must play the game to get
+            it!
+            <br />
+            <br />
+            WARNING: this is an addictive af degen ponzinomic game. the code is
+            safu{" "}
+            <Link
+              href={`${
+                wallet?.chain.blockExplorers?.etherscan?.url ??
+                goerli.blockExplorers.etherscan.url
+              }/address/${
+                wallet?.chain.id
+                  ? vapeGameAddress[
+                      wallet?.chain.id as keyof typeof vapeGameAddress
+                    ]
+                  : vapeGameAddress[5]
+              }#code`}
+              isExternal
+              color="teal.500"
+            >
+              (read it here)
+            </Link>{" "}
+            but has not been audited. play at your own risk!
+          </Text>
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
   );
 };

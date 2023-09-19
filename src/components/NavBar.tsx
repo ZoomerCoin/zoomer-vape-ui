@@ -3,7 +3,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const NavBar = () => {
   return (
-    <Box h="40px">
+    <Box h="40px" bg="#FEFC52">
       <Flex>
         <Box>
           <Heading size={"lg"}>
