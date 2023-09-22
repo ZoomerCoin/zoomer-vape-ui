@@ -72,15 +72,15 @@ export const GameUI = () => {
             <CurrentWinner />
           </Flex>
           <Flex>
-            <RandomWinner />
-          </Flex>
-          <Flex>
             <Jackpot />
             <TimeLeft />
           </Flex>
+          <Flex>
+            <RandomWinner />
+          </Flex>
           {address ? (
             <>
-              <Flex>
+              <Flex pt={4}>
                 <TakeAHit address={address} />
               </Flex>
               <Flex>
@@ -104,7 +104,7 @@ const CurrentWinner = () => {
   });
   const need = (
     <>
-      , need{" "}
+      , you need{" "}
       <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
         $ZOOMER
       </Link>{" "}
@@ -113,7 +113,7 @@ const CurrentWinner = () => {
   );
   return (
     <Stat>
-      <StatLabel>Last Hit By</StatLabel>
+      <StatLabel>Last $VAPE Hit By</StatLabel>
       <StatNumber>{lastPurchasedIsSuccess ? lastPurchased : "..."}</StatNumber>
       <StatHelpText>
         {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
@@ -128,12 +128,12 @@ const RandomWinner = () => {
     useVapeGameLottoValueEth({ watch: true });
   return (
     <Stat>
-      <StatLabel>Random Bussin Winner Pot</StatLabel>
+      <StatLabel>Bussin Jackpot</StatLabel>
       <StatNumber>
         {lottoIsSuccess ? formatEther(lottoValue!) + " ETH" : "..."}
       </StatNumber>
       <StatHelpText>
-        Do you feel lucky?? Check back when the game ends...
+        do you feel lucky?? you win wen game ends...
       </StatHelpText>
     </Stat>
   );
@@ -279,7 +279,7 @@ const HitTakenModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
             href={`${wallet?.chain.blockExplorers?.etherscan?.url}/tx/${txHash}`}
             isExternal
           >
-            Peep Game
+            Check Tx
           </Link>
         </ModalFooter>
       </ModalContent>
@@ -305,7 +305,7 @@ const Dividend = ({ address }: DividendProps) => {
   return (
     <>
       <Stat>
-        <StatLabel>My Dividend</StatLabel>
+        <StatLabel>My Free Hits</StatLabel>
         <StatNumber>
           {isSuccess ? formatEther(myDividend!) + " ETH" : "..."}
         </StatNumber>
@@ -328,7 +328,7 @@ const Dividend = ({ address }: DividendProps) => {
             onOpen();
           }}
         >
-          GET MY DIVIDEND
+          GET MY FREE HITS
         </Button>
       </Center>
       <DividendModal isOpen={isOpen} onClose={onClose} txHash={txHash} />
@@ -346,7 +346,7 @@ const DividendModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
         backdropFilter="blur(10px) hue-rotate(90deg)"
       />
       <ModalContent backgroundColor="#FEFC52">
-        <ModalHeader>YOU COLLECTED YOUR DIVIDEND</ModalHeader>
+        <ModalHeader>YOU GOT YOUR FREE HITS</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <video autoPlay loop src={require("../../public/dance.mp4")} />
@@ -356,7 +356,7 @@ const DividendModal = ({ isOpen, onClose, txHash }: TxModalProps) => {
             href={`${wallet?.chain.blockExplorers?.etherscan?.url}/tx/${txHash}`}
             isExternal
           >
-            Peep Game
+            Check Tx
           </Link>
         </ModalFooter>
       </ModalContent>
@@ -381,24 +381,25 @@ const GameDescription = () => {
           <Text as="b">
             {"it's"} smooth af:
             <br />
+            <br />
             1. Hit the $VAPE for your chance to win the Bussin Oil
             <br />
             2. The earlier you hit the vape the more $VAPE you get
             <br />
-            3. All $VAPE holders get a share of all new hits after them (the
+            3. All $VAPE holders get free hits from all the Hits after them (the
             earlier you hit the more you get).
             <br />
             4. With every Hit, the Battery resets and the Hit price increases.
             <br />
-            5. The last person to take a hit b4 the battery resets wins the
+            5. The last person to take a hit b4 the battery dies wins the
             Bussin Oil
             <br />
-            6. The first 50 hits require at least 10,000 $ZOOMER in your wallet,{" "}
+            6. The first 50 hits of a new game require at least 10,000 $ZOOMER in your wallet,{" "}
             <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
               buy it here!
             </Link>
             <br />
-            7. ONE random lucky winner gets a nice payout from the final pot (5%
+            7. ONE lucky Zoomer gets a nice payout from the final pot (5%
             of the total). how is it random? our gigabrain devs use{" "}
             <Link
               href="https://docs.chain.link/vrf/v2/introduction"
@@ -410,8 +411,8 @@ const GameDescription = () => {
             for provably fair randomness, belee dat!
             <br />
             <br />
-            you CANNOT buy $VAPE on an exchange! you must play the game to get
-            it!
+            you CANNOT buy $VAPE on an exchange! you cannot sell $VAPE, it is non-transferrable. you must play the game to get
+            it, and $VAPE does not leave the game.
             <br />
             <br />
             WARNING: this is an addictive af degen ponzinomic game. the code is
