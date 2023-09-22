@@ -19,35 +19,30 @@ const BUY_ZOOMER_LINK =
 
 const Page = () => {
   return (
-    <>
-      <VStack spacing={4} align="stretch" p={4}>
-        <NavBar />
-        <Center><Image boxSize='100px' src="/zoomer.jpg" alt="zoomer" /></Center>
-        <Flex>
-          <Spacer />
-          <Box width={640}>
-            <GameUI />
-            <LinkBox>
-              <Button
-                width="100%"
-                backgroundColor="black"
-                color="#FEFC52"
-                mt={4}
-              >
-                <LinkOverlay href={BUY_ZOOMER_LINK} isExternal>
-                  BUY ZOOMER
-                </LinkOverlay>
-              </Button>
-            </LinkBox>
-          </Box>
-          <Spacer />
-        </Flex>
-        <Flex>
-          <Spacer />
-          <Image src="/vaper.webp" alt="take a hit" />
-        </Flex>
-      </VStack>
-    </>
+    <VStack spacing={4} align="stretch" p={4}>
+      <NavBar />
+      <Center>
+        <Image boxSize="100px" src="/zoomer.jpg" alt="zoomer" />
+      </Center>
+      <Flex>
+        <Spacer />
+        <Box width={{ base: "100%", md: "640px" }}>
+          <GameUI />
+          <LinkBox>
+            <Button width="100%" backgroundColor="black" color="#FEFC52" mt={4}>
+              <LinkOverlay href={BUY_ZOOMER_LINK} isExternal>
+                BUY ZOOMER
+              </LinkOverlay>
+            </Button>
+          </LinkBox>
+        </Box>
+        <Spacer />
+      </Flex>
+      <Flex>
+        <Spacer />
+        <Image src="/vaper.webp" alt="take a hit" />
+      </Flex>
+    </VStack>
   );
 };
 

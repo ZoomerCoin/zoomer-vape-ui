@@ -15,6 +15,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       theme={extendTheme({
         styles: {
           global: () => ({
+            html: {},
             body: {
               bg: "#FEFC52",
               // backgroundImage: "url(https://pbs.twimg.com/media/F6J9eSNXwAAW0hL?format=jpg&name=large)"
