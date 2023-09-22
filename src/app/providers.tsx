@@ -15,9 +15,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
       theme={extendTheme({
         styles: {
           global: () => ({
-            html: {},
+            html: {
+              overflowX: "hidden",
+            },
             body: {
               bg: "#FEFC52",
+              overflowX: "hidden",
               // backgroundImage: "url(https://pbs.twimg.com/media/F6J9eSNXwAAW0hL?format=jpg&name=large)"
             },
           }),

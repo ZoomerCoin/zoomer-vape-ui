@@ -24,8 +24,10 @@ import {
   StatLabel,
   StatNumber,
   Text,
+  Tooltip,
   VStack,
   useDisclosure,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import {
   usePrepareVapeGamePayMyDividend,
@@ -46,7 +48,7 @@ import {
 } from "../generated";
 import { Address, formatEther } from "viem";
 import { useAccount, useWalletClient } from "wagmi";
-import { goerli } from "wagmi/chains";
+import { goerli, mainnet } from "wagmi/chains";
 import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
 import { useState } from "react";
 
@@ -96,12 +98,18 @@ export const GameUI = () => {
   );
 };
 
+const formatAddress = (address: string): string => {
+  return address.slice(0, 6) + "..." + address.slice(-4);
+};
+
 const CurrentWinner = () => {
   const { data: lastPurchased, isSuccess: lastPurchasedIsSuccess } =
     useVapeGameLastPurchasedAddress({ watch: true });
   const { data: numHits, isSuccess: numHitsIsSuccess } = useVapeGameNumHits({
     watch: true,
   });
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  console.log("isLargerThan800: ", isLargerThan800);
   const need = (
     <>
       , you need{" "}
@@ -114,7 +122,19 @@ const CurrentWinner = () => {
   return (
     <Stat>
       <StatLabel>Last $VAPE Hit By</StatLabel>
-      <StatNumber>{lastPurchasedIsSuccess ? lastPurchased : "..."}</StatNumber>
+      <StatNumber>
+        {lastPurchasedIsSuccess ? (
+          <Link
+            href={`${mainnet.blockExplorers.etherscan.url}/address/${lastPurchased}`}
+            isExternal
+            color="teal.500"
+          >
+            {isLargerThan800 ? lastPurchased : formatAddress(lastPurchased!)}
+          </Link>
+        ) : (
+          "..."
+        )}
+      </StatNumber>
       <StatHelpText>
         {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
         {numHitsIsSuccess ?? numHits! < 50 ? need : ""}
@@ -132,9 +152,7 @@ const RandomWinner = () => {
       <StatNumber>
         {lottoIsSuccess ? formatEther(lottoValue!) + " ETH" : "..."}
       </StatNumber>
-      <StatHelpText>
-        do you feel lucky?? you win wen game ends...
-      </StatHelpText>
+      <StatHelpText>do you feel lucky?? you win wen game ends...</StatHelpText>
     </Stat>
   );
 };
@@ -307,7 +325,21 @@ const Dividend = ({ address }: DividendProps) => {
       <Stat>
         <StatLabel>My Free Hits</StatLabel>
         <StatNumber>
-          {isSuccess ? formatEther(myDividend!) + " ETH" : "..."}
+          {isSuccess
+            ? (formatEther(myDividend!).split(".")[1].length > 6 ? (
+                <Tooltip
+                  label={formatEther(myDividend!)}
+                  aria-label="A tooltip"
+                >
+                  {[
+                    formatEther(myDividend!).split(".")[0],
+                    formatEther(myDividend!).split(".")[1].slice(0, 6) + "...",
+                  ].join(".")}
+                </Tooltip>
+              ) : (
+                formatEther(myDividend!)
+              )) + " ETH"
+            : "..."}
         </StatNumber>
       </Stat>
       <Center width={"50%"}>
@@ -391,16 +423,17 @@ const GameDescription = () => {
             <br />
             4. With every Hit, the Battery resets and the Hit price increases.
             <br />
-            5. The last person to take a hit b4 the battery dies wins the
-            Bussin Oil
+            5. The last person to take a hit b4 the battery dies wins the Bussin
+            Oil
             <br />
-            6. The first 50 hits of a new game require at least 10,000 $ZOOMER in your wallet,{" "}
+            6. The first 50 hits of a new game require at least 10,000 $ZOOMER
+            in your wallet,{" "}
             <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
               buy it here!
             </Link>
             <br />
-            7. ONE lucky Zoomer gets a nice payout from the final pot (5%
-            of the total). how is it random? our gigabrain devs use{" "}
+            7. ONE lucky Zoomer gets a nice payout from the final pot (5% of the
+            total). how is it random? our gigabrain devs use{" "}
             <Link
               href="https://docs.chain.link/vrf/v2/introduction"
               isExternal
@@ -411,8 +444,9 @@ const GameDescription = () => {
             for provably fair randomness, belee dat!
             <br />
             <br />
-            you CANNOT buy $VAPE on an exchange! you cannot sell $VAPE, it is non-transferrable. you must play the game to get
-            it, and $VAPE does not leave the game.
+            you CANNOT buy $VAPE on an exchange! you cannot sell $VAPE, it is
+            non-transferrable. you must play the game to get it, and $VAPE does
+            not leave the game.
             <br />
             <br />
             WARNING: this is an addictive af degen ponzinomic game. the code is
