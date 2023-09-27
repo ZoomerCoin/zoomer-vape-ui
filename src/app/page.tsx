@@ -22,7 +22,7 @@ const Page = () => {
     <VStack spacing={4} align="stretch" p={4}>
       <NavBar />
       <Center>
-        <Image boxSize="100px" src="/zoomer.jpg" alt="zoomer" />
+        <Image boxSize="100px" src="/zoomer.png" alt="zoomer" />
       </Center>
       <Flex>
         <Spacer />

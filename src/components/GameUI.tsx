@@ -24,7 +24,6 @@ import {
   StatLabel,
   StatNumber,
   Text,
-  Tooltip,
   VStack,
   useDisclosure,
   useMediaQuery,
