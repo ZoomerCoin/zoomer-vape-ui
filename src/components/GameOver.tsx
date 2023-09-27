@@ -9,7 +9,6 @@ import {
   StatHelpText,
   Link,
   useMediaQuery,
-  Box,
 } from "@chakra-ui/react";
 import { mainnet } from "wagmi/chains";
 
