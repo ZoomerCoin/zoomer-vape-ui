@@ -28,6 +28,12 @@ import {
   useDisclosure,
   useMediaQuery,
 } from "@chakra-ui/react";
+import { Address, formatEther } from "viem";
+import { useAccount, useWalletClient } from "wagmi";
+import { goerli, mainnet } from "wagmi/chains";
+import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
+import { useState } from "react";
+
 import {
   usePrepareVapeGamePayMyDividend,
   useVapeGameGameTime,
@@ -45,17 +51,16 @@ import {
   useZoomerCoinBalanceOf,
   vapeGameAddress,
 } from "../generated";
-import { Address, formatEther } from "viem";
-import { useAccount, useWalletClient } from "wagmi";
-import { goerli, mainnet } from "wagmi/chains";
-import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
-import { useState } from "react";
+import { formatAddress } from "../utils/formatAddress";
+
+import { GameOver } from "./GameOver";
 
 const BUY_ZOOMER_LINK =
   "https://app.uniswap.org/#/tokens/ethereum/0x0d505c03d30e65f6e9b4ef88855a47a89e4b7676";
 
 export const GameUI = () => {
   const { address } = useAccount();
+  const { data: isPaused } = useVapeGameIsPaused();
   return (
     <Card bg="#FEFC52" mt={4}>
       <CardBody>
@@ -69,27 +74,10 @@ export const GameUI = () => {
             </Heading>
           </Center>
           <GameDescription />
-          <Flex pt={4}>
-            <CurrentWinner />
-          </Flex>
-          <Flex>
-            <Jackpot />
-            <TimeLeft />
-          </Flex>
-          <Flex>
-            <RandomWinner />
-          </Flex>
-          {address ? (
-            <>
-              <Flex pt={4}>
-                <TakeAHit address={address} />
-              </Flex>
-              <Flex>
-                <Dividend address={address} />
-              </Flex>
-            </>
+          {isPaused ? (
+            <GameOver />
           ) : (
-            <Heading pt={6}>CONNECT YOUR WALLET TO PLAY</Heading>
+            <Game address={address} isPaused={isPaused} />
           )}
         </VStack>
       </CardBody>
@@ -97,8 +85,38 @@ export const GameUI = () => {
   );
 };
 
-const formatAddress = (address: string): string => {
-  return address.slice(0, 6) + "..." + address.slice(-4);
+type GameProps = {
+  address?: Address;
+  isPaused?: boolean;
+};
+
+const Game = ({ address, isPaused }: GameProps) => {
+  return (
+    <>
+      <Flex pt={4}>
+        <CurrentWinner />
+      </Flex>
+      <Flex>
+        <Jackpot />
+        <TimeLeft />
+      </Flex>
+      <Flex>
+        <RandomWinner />
+      </Flex>
+      {address ? (
+        <>
+          <Flex pt={4}>
+            <TakeAHit address={address} isPaused={isPaused} />
+          </Flex>
+          <Flex>
+            <Dividend address={address} />
+          </Flex>
+        </>
+      ) : (
+        <Heading pt={6}>CONNECT YOUR WALLET TO PLAY</Heading>
+      )}
+    </>
+  );
 };
 
 const CurrentWinner = () => {
@@ -210,10 +228,10 @@ const TimeLeft = () => {
 
 type TakeAHitProps = {
   address: Address;
+  isPaused?: boolean;
 };
 
-const TakeAHit = ({ address }: TakeAHitProps) => {
-  const { data: isPaused } = useVapeGameIsPaused();
+const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
   const { data: minInvest, isSuccess: isSuccessMinInvest } =
     useVapeGameMinInvest({ watch: true });
   const { writeAsync, isLoading: isLoadingTakeAHit } =
