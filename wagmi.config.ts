@@ -6,7 +6,7 @@ export default defineConfig(() => {
   const env = loadEnv({
     mode: process.env.NODE_ENV,
     envDir: process.cwd(),
-  })
+  });
   return {
     out: "src/generated.ts",
     plugins: [
@@ -17,7 +17,7 @@ export default defineConfig(() => {
           {
             name: "VapeGame",
             address: {
-              [goerli.id]: "0x3859C00fAF6c9E5948c1f7cB202e5588cA309b70",
+              [goerli.id]: "0x4ca12A7A1512C17E5cE3Ec5E29B11B0916B24328",
             },
           },
           {

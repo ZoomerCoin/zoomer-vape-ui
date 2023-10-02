@@ -343,7 +343,7 @@ const Dividend = ({ address }: DividendProps) => {
         <StatLabel>My Free Hits</StatLabel>
         <StatNumber>
           {isSuccess
-            ? (formatEther(myDividend!).split(".")[1].length > 6
+            ? (formatEther(myDividend!).split(".")[1]?.length > 6
                 ? [
                     formatEther(myDividend!).split(".")[0],
                     formatEther(myDividend!).split(".")[1].slice(0, 6) + "...",
