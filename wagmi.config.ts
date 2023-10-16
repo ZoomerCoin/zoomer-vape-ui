@@ -21,7 +21,7 @@ export default defineConfig(() => {
           {
             name: "VapeGame",
             address: {
-              [goerli.id]: "0x2E0F6d00bb43a3520FF5D175C102C79D48087d9b",
+              [goerli.id]: "0x2C39b2ac0A7261F95E4495b1d4910b9B8f16caa6",
             },
           },
           {
