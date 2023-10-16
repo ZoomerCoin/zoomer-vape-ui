@@ -3,7 +3,7 @@
 import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
 import * as React from "react";
 import { WagmiConfig } from "wagmi";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, useColorMode } from "@chakra-ui/react";
 
 import { chains, config } from "../wagmi";
 
@@ -13,13 +13,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ChakraProvider
       theme={extendTheme({
+        initialColorMode: "dark",
+        useSystemColorMode: true,
         styles: {
           global: () => ({
             html: {
               overflowX: "hidden",
             },
             body: {
-              bg: "#FEFC52",
               overflowX: "hidden",
               // backgroundImage: "url(https://pbs.twimg.com/media/F6J9eSNXwAAW0hL?format=jpg&name=large)"
             },

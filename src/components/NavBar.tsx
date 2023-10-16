@@ -1,9 +1,9 @@
-import { Box, Flex, Heading, Spacer } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Spacer, useColorMode } from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const NavBar = () => {
   return (
-    <Box h="40px" bg="#FEFC52">
+    <Box h="40px">
       <Flex>
         <Box>
           <Heading size={"lg"}>
@@ -11,6 +11,7 @@ export const NavBar = () => {
           </Heading>
         </Box>
         <Spacer />
+        {/* <Button>Color Mode</Button> */}
         <Box>
           <ConnectButton />
         </Box>

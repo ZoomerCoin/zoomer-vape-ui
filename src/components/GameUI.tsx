@@ -25,6 +25,7 @@ import {
   StatNumber,
   Text,
   VStack,
+  useColorMode,
   useDisclosure,
   useMediaQuery,
 } from "@chakra-ui/react";
@@ -44,6 +45,7 @@ import {
   useVapeGameLastPurchasedTime,
   useVapeGameLottoValueEth,
   useVapeGameMinInvest,
+  useVapeGameMinZoomer,
   useVapeGameNumHits,
   useVapeGamePayMyDividend,
   useVapeGamePotValueEth,
@@ -61,8 +63,10 @@ const BUY_ZOOMER_LINK =
 export const GameUI = () => {
   const { address } = useAccount();
   const { data: isPaused } = useVapeGameIsPaused();
+  const { colorMode } = useColorMode();
+  console.log("colorMode: ", colorMode);
   return (
-    <Card bg="#FEFC52" mt={4}>
+    <Card bg={colorMode === "light" ? "#FEFC52" : "black"} mt={4}>
       <CardBody>
         <VStack align={"stretch"}>
           <Center>
@@ -241,6 +245,8 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
   const { data: balance, isSuccess: isSuccessBalance } = useZoomerCoinBalanceOf(
     { args: [address], watch: true }
   );
+  const { data: minZoomer, isSuccess: isSuccessMinZoomer } =
+    useVapeGameMinZoomer();
   const addRecentTransaction = useAddRecentTransaction();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [txHash, setTxHash] = useState("");
@@ -275,8 +281,9 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
         ) : (
           <VStack>
             <Text as="b">
-              not enough $ZOOMER! you need 10000, you have{" "}
-              {isSuccessBalance ? balance!.toString() : "..."}!{" "}
+              not enough $ZOOMER! you need{" "}
+              {isSuccessMinZoomer ? formatEther(minZoomer!) : "..."}, you have{" "}
+              {isSuccessBalance ? formatEther(balance!) : "..."}!{" "}
               <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
                 BUY SOME!
               </Link>
