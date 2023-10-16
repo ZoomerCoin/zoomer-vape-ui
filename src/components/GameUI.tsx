@@ -40,6 +40,7 @@ import {
   useVapeGameGameTime,
   useVapeGameGetMyDividend,
   useVapeGameHasEnoughZoomer,
+  useVapeGameHasNft,
   useVapeGameIsPaused,
   useVapeGameLastPurchasedAddress,
   useVapeGameLastPurchasedTime,
@@ -245,6 +246,9 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
   const { data: balance, isSuccess: isSuccessBalance } = useZoomerCoinBalanceOf(
     { args: [address], watch: true }
   );
+  const { data: hasNft, isSuccess: isSuccessHasNft } = useVapeGameHasNft({
+    args: [address],
+  });
   const { data: minZoomer, isSuccess: isSuccessMinZoomer } =
     useVapeGameMinZoomer();
   const addRecentTransaction = useAddRecentTransaction();
@@ -260,7 +264,7 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
         </StatNumber>
       </Stat>
       <Center width={"50%"}>
-        {isSuccessHasEnough && hasEnough ? (
+        {(isSuccessHasEnough && hasEnough) || (isSuccessHasNft && hasNft) ? (
           <Button
             colorScheme="pink"
             width="100%"
@@ -286,7 +290,8 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
               {isSuccessBalance ? formatEther(balance!) : "..."}!{" "}
               <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
                 BUY SOME!
-              </Link>
+              </Link>{" "}
+              Rektguy NFT collections work also!
             </Text>
           </VStack>
         )}
