@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from "@wagmi/cli";
-import { etherscan, react } from "@wagmi/cli/plugins";
+import { etherscan, react, erc } from "@wagmi/cli/plugins";
 import { goerli } from "wagmi/chains";
 
 export default defineConfig(() => {
@@ -10,6 +10,10 @@ export default defineConfig(() => {
   return {
     out: "src/generated.ts",
     plugins: [
+      erc({
+        20: false,
+        721: true,
+      }),
       etherscan({
         apiKey: env.ETHERSCAN_API_KEY!,
         chainId: goerli.id,
@@ -17,7 +21,7 @@ export default defineConfig(() => {
           {
             name: "VapeGame",
             address: {
-              [goerli.id]: "0xD38f9B96BE3b5d9D5e245D1Bb35ed65Bd596B338",
+              [goerli.id]: "0x2E0F6d00bb43a3520FF5D175C102C79D48087d9b",
             },
           },
           {
