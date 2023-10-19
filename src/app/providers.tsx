@@ -13,7 +13,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ChakraProvider
       theme={extendTheme({
-        initialColorMode: "dark",
+        initialColorMode: "light",
         useSystemColorMode: true,
         styles: {
           global: () => ({

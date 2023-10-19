@@ -25,8 +25,8 @@ const Page = () => {
       spacing={4}
       align="stretch"
       p={4}
-      backgroundColor="#FEFC52"
-      // backgroundColor={colorMode === "light" ? "#FEFC52" : "blackAlpha.100"}
+      backgroundColor={colorMode === "light" ? "#FEFC52" : "black"}
+      textColor={colorMode === "light" ? "black" : "#FEFC52"}
     >
       <NavBar />
       <Center>
@@ -37,7 +37,12 @@ const Page = () => {
         <Box width={{ base: "100%", md: "640px" }}>
           <GameUI />
           <LinkBox>
-            <Button width="100%" backgroundColor="black" color="#FEFC52" mt={4}>
+            <Button
+              width="100%"
+              backgroundColor={colorMode === "light" ? "black" : "#FEFC52"}
+              color={colorMode === "light" ? "#FEFC52" : "black"}
+              mt={4}
+            >
               <LinkOverlay href={BUY_ZOOMER_LINK} isExternal>
                 BUY ZOOMER
               </LinkOverlay>

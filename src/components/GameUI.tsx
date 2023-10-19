@@ -67,7 +67,13 @@ export const GameUI = () => {
   const { colorMode } = useColorMode();
   console.log("colorMode: ", colorMode);
   return (
-    <Card bg={colorMode === "light" ? "#FEFC52" : "black"} mt={4}>
+    <Card
+      bg={colorMode === "light" ? "#FEFC52" : "blackAlpha.100"}
+      textColor={colorMode === "light" ? "black" : "#FEFC52"}
+      borderColor={colorMode === "light" ? "blackAlpha.100" : "#FEFC52"}
+      variant={"outline"}
+      mt={4}
+    >
       <CardBody>
         <VStack align={"stretch"}>
           <Center>
@@ -448,8 +454,8 @@ const GameDescription = () => {
             5. The last person to take a hit b4 the battery dies wins the Bussin
             Oil
             <br />
-            6. The first 20 hits of a new game require at least 10,000,000 $ZOOMER
-            in your wallet,{" "}
+            6. The first 20 hits of a new game require at least 10,000,000
+            $ZOOMER in your wallet,{" "}
             <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
               buy it here!
             </Link>

@@ -1,7 +1,18 @@
-import { Box, Button, Flex, Heading, Spacer, useColorMode } from "@chakra-ui/react";
+import { SunIcon, MoonIcon, SearchIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  IconButton,
+  Spacer,
+  useColorMode,
+} from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const NavBar = () => {
+  const { toggleColorMode, colorMode } = useColorMode();
+  console.log("colorMode: ", colorMode);
   return (
     <Box h="40px">
       <Flex>
@@ -11,10 +22,20 @@ export const NavBar = () => {
           </Heading>
         </Box>
         <Spacer />
-        {/* <Button>Color Mode</Button> */}
-        <Box>
-          <ConnectButton />
-        </Box>
+        <Flex direction={"row"}>
+          <IconButton
+            colorScheme={colorMode === "light" ? "blackAlpha" : "yellow"}
+            mr={5}
+            onClick={toggleColorMode}
+            // variant={"ghost"}
+            aria-label="Toggle color mode"
+            // icon={<SearchIcon />}
+            icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
+          />
+          <Box>
+            <ConnectButton />
+          </Box>
+        </Flex>
       </Flex>
     </Box>
   );
