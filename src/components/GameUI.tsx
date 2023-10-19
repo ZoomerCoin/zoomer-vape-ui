@@ -33,7 +33,7 @@ import { Address, formatEther } from "viem";
 import { useAccount, useWalletClient } from "wagmi";
 import { goerli, mainnet } from "wagmi/chains";
 import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   usePrepareVapeGamePayMyDividend,
@@ -65,7 +65,12 @@ export const GameUI = () => {
   const { address } = useAccount();
   const { data: isPaused } = useVapeGameIsPaused();
   const { colorMode } = useColorMode();
-  console.log("colorMode: ", colorMode);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useEffect(() => {
+    onOpen();
+  }, []);
+
   return (
     <Card
       bg={colorMode === "light" ? "#FEFC52" : "blackAlpha.100"}
@@ -76,6 +81,7 @@ export const GameUI = () => {
     >
       <CardBody>
         <VStack align={"stretch"}>
+          <IntroModal isOpen={isOpen} onClose={onClose} />
           <Center>
             <Heading>$VAPE</Heading>
           </Center>
@@ -130,6 +136,42 @@ const Game = ({ address, isPaused }: GameProps) => {
   );
 };
 
+type IntroModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const IntroModal = ({ onClose, isOpen }: IntroModalProps) => {
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} size={"2xl"}>
+      <ModalOverlay
+        bg="blackAlpha.900"
+        // backdropFilter="blur(10px) hue-rotate(90deg)"
+      />
+      <ModalContent backgroundColor="black">
+        <ModalBody>
+          <video
+            autoPlay
+            loop
+            src={require("../../public/rektzoomercollab.mp4")}
+          />
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            color="#FEFC52"
+            borderColor="#FEFC52"
+            backgroundColor="black"
+            onClick={onClose}
+            variant={"outline"}
+          >
+            /I_WANT_TO_TAKE_A_HIT
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};
+
 const CurrentWinner = () => {
   const { data: lastPurchased, isSuccess: lastPurchasedIsSuccess } =
     useVapeGameLastPurchasedAddress({ watch: true });
@@ -137,7 +179,6 @@ const CurrentWinner = () => {
     watch: true,
   });
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
-  console.log("isLargerThan800: ", isLargerThan800);
   const need = (
     <>
       , you need{" "}

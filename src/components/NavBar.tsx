@@ -12,7 +12,6 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const NavBar = () => {
   const { toggleColorMode, colorMode } = useColorMode();
-  console.log("colorMode: ", colorMode);
   return (
     <Box h="40px">
       <Flex>
