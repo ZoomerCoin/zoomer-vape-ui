@@ -47,13 +47,20 @@ const Page = () => {
                 BUY ZOOMER
               </LinkOverlay>
             </Button>
+            <Flex direction={"row"}>
+              <Spacer />
+              {colorMode === "dark" ? (
+                <Image boxSize="400px" src="/rektvape.png" alt="take a hit" />
+              ) : (
+                <Image boxSize="400px" src="/vaper.webp" alt="take a hit" />
+              )}
+            </Flex>
           </LinkBox>
         </Box>
         <Spacer />
       </Flex>
       <Flex>
         <Spacer />
-        <Image src="/vaper.webp" alt="take a hit" />
       </Flex>
     </VStack>
   );
