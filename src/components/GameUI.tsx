@@ -151,6 +151,7 @@ const IntroModal = ({ onClose, isOpen }: IntroModalProps) => {
       <ModalContent backgroundColor="black">
         <ModalBody>
           <video
+            muted
             autoPlay
             loop
             src={require("../../public/rektzoomercollab.mp4")}
