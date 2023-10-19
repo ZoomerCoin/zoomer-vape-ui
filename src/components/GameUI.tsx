@@ -152,6 +152,7 @@ const IntroModal = ({ onClose, isOpen }: IntroModalProps) => {
         <ModalBody>
           <video
             muted
+            playsInline
             autoPlay
             loop
             src={require("../../public/rektzoomercollab.mp4")}
