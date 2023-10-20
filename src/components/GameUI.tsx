@@ -51,6 +51,7 @@ import {
   useVapeGamePayMyDividend,
   useVapeGamePotValueEth,
   useVapeGameTakeAVapeHit,
+  useVapeGameZoomerHits,
   useZoomerCoinBalanceOf,
   vapeGameAddress,
 } from "../generated";
@@ -292,6 +293,9 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
     useVapeGameTakeAVapeHit();
   const { data: hasEnough, isSuccess: isSuccessHasEnough } =
     useVapeGameHasEnoughZoomer({ args: [address], watch: true });
+  const { data: numHits, isSuccess: isSuccessNumHits } = useVapeGameNumHits();
+  const { data: zoomerHits, isSuccess: isSuccessZoomerHits } =
+    useVapeGameZoomerHits();
   const { data: balance, isSuccess: isSuccessBalance } = useZoomerCoinBalanceOf(
     { args: [address], watch: true }
   );
@@ -313,7 +317,9 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
         </StatNumber>
       </Stat>
       <Center width={"50%"}>
-        {(isSuccessHasEnough && hasEnough) || (isSuccessHasNft && hasNft) ? (
+        {(isSuccessHasEnough && hasEnough) ||
+        (isSuccessHasNft && hasNft) ||
+        (isSuccessNumHits && isSuccessZoomerHits && numHits > zoomerHits) ? (
           <Button
             colorScheme="pink"
             width="100%"
