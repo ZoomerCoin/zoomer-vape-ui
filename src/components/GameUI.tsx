@@ -31,7 +31,7 @@ import {
 } from "@chakra-ui/react";
 import { Address, formatEther } from "viem";
 import { useAccount, useWalletClient } from "wagmi";
-import { goerli, mainnet } from "wagmi/chains";
+import { mainnet } from "wagmi/chains";
 import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
 import { useEffect, useState } from "react";
 
@@ -533,13 +533,13 @@ const GameDescription = () => {
             <Link
               href={`${
                 wallet?.chain.blockExplorers?.etherscan?.url ??
-                goerli.blockExplorers.etherscan.url
+                mainnet.blockExplorers.etherscan.url
               }/address/${
                 wallet?.chain.id
                   ? vapeGameAddress[
                       wallet?.chain.id as keyof typeof vapeGameAddress
                     ]
-                  : vapeGameAddress[5]
+                  : vapeGameAddress[1]
               }#code`}
               isExternal
               color="teal.500"

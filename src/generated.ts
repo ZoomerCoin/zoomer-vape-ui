@@ -7,6 +7,8 @@ import {
   UsePrepareContractWriteConfig,
   useContractEvent,
   UseContractEventConfig,
+  useNetwork,
+  useChainId,
   Address,
 } from 'wagmi'
 import {
@@ -184,7 +186,8 @@ export const erc721ABI = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export const vapeGameABI = [
   {
@@ -731,14 +734,17 @@ export const vapeGameABI = [
 ] as const
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export const vapeGameAddress = {
-  5: '0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD',
+  1: '0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5',
+  5: '0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14',
 } as const
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export const vapeGameConfig = {
   address: vapeGameAddress,
@@ -750,17 +756,11 @@ export const vapeGameConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export const zoomerCoinABI = [
-  {
-    stateMutability: 'nonpayable',
-    type: 'constructor',
-    inputs: [
-      { name: '_name', internalType: 'string', type: 'string' },
-      { name: '_symbol', internalType: 'string', type: 'string' },
-    ],
-  },
+  { stateMutability: 'nonpayable', type: 'constructor', inputs: [] },
   {
     type: 'event',
     anonymous: false,
@@ -790,6 +790,38 @@ export const zoomerCoinABI = [
     type: 'event',
     anonymous: false,
     inputs: [
+      {
+        name: '_maxTxAmount',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'MaxTxAmountUpdated',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'previousOwner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'newOwner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+    ],
+    name: 'OwnershipTransferred',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
       { name: 'from', internalType: 'address', type: 'address', indexed: true },
       { name: 'to', internalType: 'address', type: 'address', indexed: true },
       {
@@ -800,6 +832,55 @@ export const zoomerCoinABI = [
       },
     ],
     name: 'Transfer',
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: '_maxTaxSwap',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: '_maxTxAmount',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: '_maxWalletSize',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: '_reduceBuyTaxAt',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: '_reduceSellTaxAt',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: '_taxSwapThreshold',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [{ name: 'bots_', internalType: 'address[]', type: 'address[]' }],
+    name: 'addBots',
+    outputs: [],
   },
   {
     stateMutability: 'view',
@@ -829,17 +910,7 @@ export const zoomerCoinABI = [
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    inputs: [
-      { name: 'account', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'burn',
-    outputs: [],
-  },
-  {
-    stateMutability: 'view',
+    stateMutability: 'pure',
     type: 'function',
     inputs: [],
     name: 'decimals',
@@ -848,83 +919,61 @@ export const zoomerCoinABI = [
   {
     stateMutability: 'nonpayable',
     type: 'function',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'subtractedValue', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'decreaseAllowance',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    inputs: [{ name: 'notbot', internalType: 'address[]', type: 'address[]' }],
+    name: 'delBots',
+    outputs: [],
   },
   {
     stateMutability: 'view',
     type: 'function',
-    inputs: [],
-    name: 'detailsHash',
-    outputs: [{ name: '', internalType: 'bytes32', type: 'bytes32' }],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'addedValue', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'increaseAllowance',
+    inputs: [{ name: 'a', internalType: 'address', type: 'address' }],
+    name: 'isBot',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
   },
   {
     stateMutability: 'nonpayable',
     type: 'function',
     inputs: [],
-    name: 'initialize',
+    name: 'manualSwap',
     outputs: [],
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    inputs: [
-      { name: 'account', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'mint',
-    outputs: [],
-  },
-  {
-    stateMutability: 'view',
+    stateMutability: 'pure',
     type: 'function',
     inputs: [],
     name: 'name',
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
   },
   {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    inputs: [
-      { name: '_newName', internalType: 'string', type: 'string' },
-      { name: '_newSymbol', internalType: 'string', type: 'string' },
-      { name: '_newDecimals', internalType: 'uint8', type: 'uint8' },
-    ],
-    name: 'setDetails',
-    outputs: [],
-  },
-  {
-    stateMutability: 'nonpayable',
-    type: 'function',
-    inputs: [
-      { name: '_detailsHash', internalType: 'bytes32', type: 'bytes32' },
-    ],
-    name: 'setDetailsHash',
-    outputs: [],
-  },
-  {
     stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'owner',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [],
+    name: 'removeLimits',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+  },
+  {
+    stateMutability: 'pure',
     type: 'function',
     inputs: [],
     name: 'symbol',
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
   },
   {
-    stateMutability: 'view',
+    stateMutability: 'pure',
     type: 'function',
     inputs: [],
     name: 'totalSupply',
@@ -934,18 +983,25 @@ export const zoomerCoinABI = [
     stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
-      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'recipient', internalType: 'address', type: 'address' },
       { name: 'amount', internalType: 'uint256', type: 'uint256' },
     ],
     name: 'transfer',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
   },
   {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'transferDelayEnabled',
+    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+  },
+  {
     stateMutability: 'nonpayable',
     type: 'function',
     inputs: [
-      { name: 'from', internalType: 'address', type: 'address' },
-      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'recipient', internalType: 'address', type: 'address' },
       { name: 'amount', internalType: 'uint256', type: 'uint256' },
     ],
     name: 'transferFrom',
@@ -954,21 +1010,25 @@ export const zoomerCoinABI = [
   {
     stateMutability: 'nonpayable',
     type: 'function',
-    inputs: [{ name: '_newOwner', internalType: 'address', type: 'address' }],
-    name: 'transferOwnership',
+    inputs: [],
+    name: 'zoomzoom',
     outputs: [],
   },
+  { stateMutability: 'payable', type: 'receive' },
 ] as const
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export const zoomerCoinAddress = {
+  1: '0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676',
   5: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
 } as const
 
 /**
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export const zoomerCoinConfig = {
   address: zoomerCoinAddress,
@@ -1443,7 +1503,8 @@ export function useErc721TransferEvent(
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameRead<
   TFunctionName extends string,
@@ -1454,9 +1515,12 @@ export function useVapeGameRead<
     'abi' | 'address'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
 }
@@ -1464,7 +1528,8 @@ export function useVapeGameRead<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"DIVIDEND_CONTRIBUTION"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameDividendContribution<
   TFunctionName extends 'DIVIDEND_CONTRIBUTION',
@@ -1475,9 +1540,12 @@ export function useVapeGameDividendContribution<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'DIVIDEND_CONTRIBUTION',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1486,7 +1554,8 @@ export function useVapeGameDividendContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"GAME_TIME"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameGameTime<
   TFunctionName extends 'GAME_TIME',
@@ -1497,9 +1566,12 @@ export function useVapeGameGameTime<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'GAME_TIME',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1508,7 +1580,8 @@ export function useVapeGameGameTime<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"LOTTO_CONTRIBUTION"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLottoContribution<
   TFunctionName extends 'LOTTO_CONTRIBUTION',
@@ -1519,9 +1592,12 @@ export function useVapeGameLottoContribution<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'LOTTO_CONTRIBUTION',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1530,7 +1606,8 @@ export function useVapeGameLottoContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"MIN_INVEST_TICK"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameMinInvestTick<
   TFunctionName extends 'MIN_INVEST_TICK',
@@ -1541,9 +1618,12 @@ export function useVapeGameMinInvestTick<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'MIN_INVEST_TICK',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1552,7 +1632,8 @@ export function useVapeGameMinInvestTick<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"MIN_ZOOMER"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameMinZoomer<
   TFunctionName extends 'MIN_ZOOMER',
@@ -1563,9 +1644,12 @@ export function useVapeGameMinZoomer<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'MIN_ZOOMER',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1574,7 +1658,8 @@ export function useVapeGameMinZoomer<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"POT_CONTRIBUTION"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePotContribution<
   TFunctionName extends 'POT_CONTRIBUTION',
@@ -1585,9 +1670,12 @@ export function useVapeGamePotContribution<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'POT_CONTRIBUTION',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1596,7 +1684,8 @@ export function useVapeGamePotContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"TREASURY_CONTRIBUTION"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTreasuryContribution<
   TFunctionName extends 'TREASURY_CONTRIBUTION',
@@ -1607,9 +1696,12 @@ export function useVapeGameTreasuryContribution<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'TREASURY_CONTRIBUTION',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1618,7 +1710,8 @@ export function useVapeGameTreasuryContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"VAPE_PRICE_TICK"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameVapePriceTick<
   TFunctionName extends 'VAPE_PRICE_TICK',
@@ -1629,9 +1722,12 @@ export function useVapeGameVapePriceTick<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'VAPE_PRICE_TICK',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1640,7 +1736,8 @@ export function useVapeGameVapePriceTick<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"ZOOMER_HITS"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameZoomerHits<
   TFunctionName extends 'ZOOMER_HITS',
@@ -1651,9 +1748,12 @@ export function useVapeGameZoomerHits<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'ZOOMER_HITS',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1662,7 +1762,8 @@ export function useVapeGameZoomerHits<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"allowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameAllowance<
   TFunctionName extends 'allowance',
@@ -1673,9 +1774,12 @@ export function useVapeGameAllowance<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'allowance',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1684,7 +1788,8 @@ export function useVapeGameAllowance<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"balanceOf"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameBalanceOf<
   TFunctionName extends 'balanceOf',
@@ -1695,9 +1800,12 @@ export function useVapeGameBalanceOf<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'balanceOf',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1706,7 +1814,8 @@ export function useVapeGameBalanceOf<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"collectedFee"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameCollectedFee<
   TFunctionName extends 'collectedFee',
@@ -1717,9 +1826,12 @@ export function useVapeGameCollectedFee<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'collectedFee',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1728,7 +1840,8 @@ export function useVapeGameCollectedFee<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decimals"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameDecimals<
   TFunctionName extends 'decimals',
@@ -1739,9 +1852,12 @@ export function useVapeGameDecimals<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'decimals',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1750,7 +1866,8 @@ export function useVapeGameDecimals<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"finalLottoValueETH"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameFinalLottoValueEth<
   TFunctionName extends 'finalLottoValueETH',
@@ -1761,9 +1878,12 @@ export function useVapeGameFinalLottoValueEth<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'finalLottoValueETH',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1772,7 +1892,8 @@ export function useVapeGameFinalLottoValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"finalLottoWinner"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameFinalLottoWinner<
   TFunctionName extends 'finalLottoWinner',
@@ -1783,9 +1904,12 @@ export function useVapeGameFinalLottoWinner<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'finalLottoWinner',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1794,7 +1918,8 @@ export function useVapeGameFinalLottoWinner<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"finalPotValueETH"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameFinalPotValueEth<
   TFunctionName extends 'finalPotValueETH',
@@ -1805,9 +1930,12 @@ export function useVapeGameFinalPotValueEth<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'finalPotValueETH',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1816,7 +1944,8 @@ export function useVapeGameFinalPotValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"getMyDividend"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameGetMyDividend<
   TFunctionName extends 'getMyDividend',
@@ -1827,9 +1956,12 @@ export function useVapeGameGetMyDividend<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'getMyDividend',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1838,7 +1970,8 @@ export function useVapeGameGetMyDividend<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"hasEnoughZoomer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameHasEnoughZoomer<
   TFunctionName extends 'hasEnoughZoomer',
@@ -1849,9 +1982,12 @@ export function useVapeGameHasEnoughZoomer<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'hasEnoughZoomer',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1860,7 +1996,8 @@ export function useVapeGameHasEnoughZoomer<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"hasNft"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameHasNft<
   TFunctionName extends 'hasNft',
@@ -1871,9 +2008,12 @@ export function useVapeGameHasNft<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'hasNft',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1882,7 +2022,8 @@ export function useVapeGameHasNft<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"hitters"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameHitters<
   TFunctionName extends 'hitters',
@@ -1893,9 +2034,12 @@ export function useVapeGameHitters<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'hitters',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1904,7 +2048,8 @@ export function useVapeGameHitters<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"isPaused"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameIsPaused<
   TFunctionName extends 'isPaused',
@@ -1915,9 +2060,12 @@ export function useVapeGameIsPaused<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'isPaused',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1926,7 +2074,8 @@ export function useVapeGameIsPaused<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lastPurchasedAddress"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLastPurchasedAddress<
   TFunctionName extends 'lastPurchasedAddress',
@@ -1937,9 +2086,12 @@ export function useVapeGameLastPurchasedAddress<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'lastPurchasedAddress',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1948,7 +2100,8 @@ export function useVapeGameLastPurchasedAddress<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lastPurchasedTime"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLastPurchasedTime<
   TFunctionName extends 'lastPurchasedTime',
@@ -1959,9 +2112,12 @@ export function useVapeGameLastPurchasedTime<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'lastPurchasedTime',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1970,7 +2126,8 @@ export function useVapeGameLastPurchasedTime<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"linkAddress"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLinkAddress<
   TFunctionName extends 'linkAddress',
@@ -1981,9 +2138,12 @@ export function useVapeGameLinkAddress<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'linkAddress',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -1992,7 +2152,8 @@ export function useVapeGameLinkAddress<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lottoValueETH"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLottoValueEth<
   TFunctionName extends 'lottoValueETH',
@@ -2003,9 +2164,12 @@ export function useVapeGameLottoValueEth<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'lottoValueETH',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2014,7 +2178,8 @@ export function useVapeGameLottoValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"minInvest"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameMinInvest<
   TFunctionName extends 'minInvest',
@@ -2025,9 +2190,12 @@ export function useVapeGameMinInvest<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'minInvest',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2036,7 +2204,8 @@ export function useVapeGameMinInvest<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"name"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameName<
   TFunctionName extends 'name',
@@ -2047,9 +2216,12 @@ export function useVapeGameName<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'name',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2058,7 +2230,8 @@ export function useVapeGameName<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"nfts"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameNfts<
   TFunctionName extends 'nfts',
@@ -2069,9 +2242,12 @@ export function useVapeGameNfts<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'nfts',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2080,7 +2256,8 @@ export function useVapeGameNfts<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"numHits"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameNumHits<
   TFunctionName extends 'numHits',
@@ -2091,9 +2268,12 @@ export function useVapeGameNumHits<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'numHits',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2102,7 +2282,8 @@ export function useVapeGameNumHits<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"owner"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameOwner<
   TFunctionName extends 'owner',
@@ -2113,9 +2294,12 @@ export function useVapeGameOwner<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'owner',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2124,7 +2308,8 @@ export function useVapeGameOwner<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"potValueETH"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePotValueEth<
   TFunctionName extends 'potValueETH',
@@ -2135,9 +2320,12 @@ export function useVapeGamePotValueEth<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'potValueETH',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2146,7 +2334,8 @@ export function useVapeGamePotValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"symbol"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameSymbol<
   TFunctionName extends 'symbol',
@@ -2157,9 +2346,12 @@ export function useVapeGameSymbol<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'symbol',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2168,7 +2360,8 @@ export function useVapeGameSymbol<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"totalDividendsValueETH"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTotalDividendsValueEth<
   TFunctionName extends 'totalDividendsValueETH',
@@ -2179,9 +2372,12 @@ export function useVapeGameTotalDividendsValueEth<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'totalDividendsValueETH',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2190,7 +2386,8 @@ export function useVapeGameTotalDividendsValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"totalSupply"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTotalSupply<
   TFunctionName extends 'totalSupply',
@@ -2201,9 +2398,12 @@ export function useVapeGameTotalSupply<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'totalSupply',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2212,7 +2412,8 @@ export function useVapeGameTotalSupply<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"vapeTokenPrice"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameVapeTokenPrice<
   TFunctionName extends 'vapeTokenPrice',
@@ -2223,9 +2424,12 @@ export function useVapeGameVapeTokenPrice<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'vapeTokenPrice',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2234,7 +2438,8 @@ export function useVapeGameVapeTokenPrice<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"zoomer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameZoomer<
   TFunctionName extends 'zoomer',
@@ -2245,9 +2450,12 @@ export function useVapeGameZoomer<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'zoomer',
     ...config,
   } as UseContractReadConfig<typeof vapeGameABI, TFunctionName, TSelectData>)
@@ -2256,7 +2464,8 @@ export function useVapeGameZoomer<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameWrite<
   TFunctionName extends string,
@@ -2278,9 +2487,12 @@ export function useVapeGameWrite<
         chainId?: TChainId
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, TFunctionName, TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     ...config,
   } as any)
 }
@@ -2288,7 +2500,8 @@ export function useVapeGameWrite<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"acceptOwnership"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameAcceptOwnership<
   TMode extends WriteContractMode = undefined,
@@ -2314,9 +2527,12 @@ export function useVapeGameAcceptOwnership<
         functionName?: 'acceptOwnership'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'acceptOwnership', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'acceptOwnership',
     ...config,
   } as any)
@@ -2325,7 +2541,8 @@ export function useVapeGameAcceptOwnership<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"approve"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameApprove<
   TMode extends WriteContractMode = undefined,
@@ -2347,9 +2564,12 @@ export function useVapeGameApprove<
         functionName?: 'approve'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'approve', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'approve',
     ...config,
   } as any)
@@ -2358,7 +2578,8 @@ export function useVapeGameApprove<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decreaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameDecreaseAllowance<
   TMode extends WriteContractMode = undefined,
@@ -2384,9 +2605,12 @@ export function useVapeGameDecreaseAllowance<
         functionName?: 'decreaseAllowance'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'decreaseAllowance', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'decreaseAllowance',
     ...config,
   } as any)
@@ -2395,7 +2619,8 @@ export function useVapeGameDecreaseAllowance<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"increaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameIncreaseAllowance<
   TMode extends WriteContractMode = undefined,
@@ -2421,9 +2646,12 @@ export function useVapeGameIncreaseAllowance<
         functionName?: 'increaseAllowance'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'increaseAllowance', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'increaseAllowance',
     ...config,
   } as any)
@@ -2432,7 +2660,8 @@ export function useVapeGameIncreaseAllowance<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"payMyDividend"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePayMyDividend<
   TMode extends WriteContractMode = undefined,
@@ -2458,9 +2687,12 @@ export function useVapeGamePayMyDividend<
         functionName?: 'payMyDividend'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'payMyDividend', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'payMyDividend',
     ...config,
   } as any)
@@ -2469,7 +2701,8 @@ export function useVapeGamePayMyDividend<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"paydDevFee"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePaydDevFee<
   TMode extends WriteContractMode = undefined,
@@ -2491,9 +2724,12 @@ export function useVapeGamePaydDevFee<
         functionName?: 'paydDevFee'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'paydDevFee', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'paydDevFee',
     ...config,
   } as any)
@@ -2502,7 +2738,8 @@ export function useVapeGamePaydDevFee<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"rawFulfillRandomWords"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameRawFulfillRandomWords<
   TMode extends WriteContractMode = undefined,
@@ -2532,9 +2769,12 @@ export function useVapeGameRawFulfillRandomWords<
         functionName?: 'rawFulfillRandomWords'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'rawFulfillRandomWords', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'rawFulfillRandomWords',
     ...config,
   } as any)
@@ -2543,7 +2783,8 @@ export function useVapeGameRawFulfillRandomWords<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"startGame"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameStartGame<
   TMode extends WriteContractMode = undefined,
@@ -2565,9 +2806,12 @@ export function useVapeGameStartGame<
         functionName?: 'startGame'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'startGame', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'startGame',
     ...config,
   } as any)
@@ -2576,7 +2820,8 @@ export function useVapeGameStartGame<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"sweep"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameSweep<
   TMode extends WriteContractMode = undefined,
@@ -2598,9 +2843,12 @@ export function useVapeGameSweep<
         functionName?: 'sweep'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'sweep', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'sweep',
     ...config,
   } as any)
@@ -2609,7 +2857,8 @@ export function useVapeGameSweep<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeAVapeHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTakeAVapeHit<
   TMode extends WriteContractMode = undefined,
@@ -2635,9 +2884,12 @@ export function useVapeGameTakeAVapeHit<
         functionName?: 'takeAVapeHit'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'takeAVapeHit', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'takeAVapeHit',
     ...config,
   } as any)
@@ -2646,7 +2898,8 @@ export function useVapeGameTakeAVapeHit<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeTheLastHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTakeTheLastHit<
   TMode extends WriteContractMode = undefined,
@@ -2672,9 +2925,12 @@ export function useVapeGameTakeTheLastHit<
         functionName?: 'takeTheLastHit'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'takeTheLastHit', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'takeTheLastHit',
     ...config,
   } as any)
@@ -2683,7 +2939,8 @@ export function useVapeGameTakeTheLastHit<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransfer<
   TMode extends WriteContractMode = undefined,
@@ -2705,9 +2962,12 @@ export function useVapeGameTransfer<
         functionName?: 'transfer'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'transfer', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'transfer',
     ...config,
   } as any)
@@ -2716,7 +2976,8 @@ export function useVapeGameTransfer<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferFrom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransferFrom<
   TMode extends WriteContractMode = undefined,
@@ -2742,9 +3003,12 @@ export function useVapeGameTransferFrom<
         functionName?: 'transferFrom'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'transferFrom', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'transferFrom',
     ...config,
   } as any)
@@ -2753,7 +3017,8 @@ export function useVapeGameTransferFrom<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferOwnership"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransferOwnership<
   TMode extends WriteContractMode = undefined,
@@ -2779,9 +3044,12 @@ export function useVapeGameTransferOwnership<
         functionName?: 'transferOwnership'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'transferOwnership', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'transferOwnership',
     ...config,
   } as any)
@@ -2790,7 +3058,8 @@ export function useVapeGameTransferOwnership<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"withdrawLink"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameWithdrawLink<
   TMode extends WriteContractMode = undefined,
@@ -2816,9 +3085,12 @@ export function useVapeGameWithdrawLink<
         functionName?: 'withdrawLink'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof vapeGameABI, 'withdrawLink', TMode>({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'withdrawLink',
     ...config,
   } as any)
@@ -2827,7 +3099,8 @@ export function useVapeGameWithdrawLink<
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameWrite<TFunctionName extends string>(
   config: Omit<
@@ -2835,9 +3108,12 @@ export function usePrepareVapeGameWrite<TFunctionName extends string>(
     'abi' | 'address'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, TFunctionName>)
 }
@@ -2845,7 +3121,8 @@ export function usePrepareVapeGameWrite<TFunctionName extends string>(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"acceptOwnership"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameAcceptOwnership(
   config: Omit<
@@ -2853,9 +3130,12 @@ export function usePrepareVapeGameAcceptOwnership(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'acceptOwnership',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'acceptOwnership'>)
@@ -2864,7 +3144,8 @@ export function usePrepareVapeGameAcceptOwnership(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"approve"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameApprove(
   config: Omit<
@@ -2872,9 +3153,12 @@ export function usePrepareVapeGameApprove(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'approve',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'approve'>)
@@ -2883,7 +3167,8 @@ export function usePrepareVapeGameApprove(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decreaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameDecreaseAllowance(
   config: Omit<
@@ -2891,9 +3176,12 @@ export function usePrepareVapeGameDecreaseAllowance(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'decreaseAllowance',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'decreaseAllowance'>)
@@ -2902,7 +3190,8 @@ export function usePrepareVapeGameDecreaseAllowance(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"increaseAllowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameIncreaseAllowance(
   config: Omit<
@@ -2910,9 +3199,12 @@ export function usePrepareVapeGameIncreaseAllowance(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'increaseAllowance',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'increaseAllowance'>)
@@ -2921,7 +3213,8 @@ export function usePrepareVapeGameIncreaseAllowance(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"payMyDividend"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGamePayMyDividend(
   config: Omit<
@@ -2929,9 +3222,12 @@ export function usePrepareVapeGamePayMyDividend(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'payMyDividend',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'payMyDividend'>)
@@ -2940,7 +3236,8 @@ export function usePrepareVapeGamePayMyDividend(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"paydDevFee"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGamePaydDevFee(
   config: Omit<
@@ -2948,9 +3245,12 @@ export function usePrepareVapeGamePaydDevFee(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'paydDevFee',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'paydDevFee'>)
@@ -2959,7 +3259,8 @@ export function usePrepareVapeGamePaydDevFee(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"rawFulfillRandomWords"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameRawFulfillRandomWords(
   config: Omit<
@@ -2967,9 +3268,12 @@ export function usePrepareVapeGameRawFulfillRandomWords(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'rawFulfillRandomWords',
     ...config,
   } as UsePrepareContractWriteConfig<
@@ -2981,7 +3285,8 @@ export function usePrepareVapeGameRawFulfillRandomWords(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"startGame"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameStartGame(
   config: Omit<
@@ -2989,9 +3294,12 @@ export function usePrepareVapeGameStartGame(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'startGame',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'startGame'>)
@@ -3000,7 +3308,8 @@ export function usePrepareVapeGameStartGame(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"sweep"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameSweep(
   config: Omit<
@@ -3008,9 +3317,12 @@ export function usePrepareVapeGameSweep(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'sweep',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'sweep'>)
@@ -3019,7 +3331,8 @@ export function usePrepareVapeGameSweep(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeAVapeHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTakeAVapeHit(
   config: Omit<
@@ -3027,9 +3340,12 @@ export function usePrepareVapeGameTakeAVapeHit(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'takeAVapeHit',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'takeAVapeHit'>)
@@ -3038,7 +3354,8 @@ export function usePrepareVapeGameTakeAVapeHit(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeTheLastHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTakeTheLastHit(
   config: Omit<
@@ -3046,9 +3363,12 @@ export function usePrepareVapeGameTakeTheLastHit(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'takeTheLastHit',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'takeTheLastHit'>)
@@ -3057,7 +3377,8 @@ export function usePrepareVapeGameTakeTheLastHit(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTransfer(
   config: Omit<
@@ -3065,9 +3386,12 @@ export function usePrepareVapeGameTransfer(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'transfer',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'transfer'>)
@@ -3076,7 +3400,8 @@ export function usePrepareVapeGameTransfer(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferFrom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTransferFrom(
   config: Omit<
@@ -3084,9 +3409,12 @@ export function usePrepareVapeGameTransferFrom(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'transferFrom',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'transferFrom'>)
@@ -3095,7 +3423,8 @@ export function usePrepareVapeGameTransferFrom(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferOwnership"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTransferOwnership(
   config: Omit<
@@ -3103,9 +3432,12 @@ export function usePrepareVapeGameTransferOwnership(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'transferOwnership',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'transferOwnership'>)
@@ -3114,7 +3446,8 @@ export function usePrepareVapeGameTransferOwnership(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"withdrawLink"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameWithdrawLink(
   config: Omit<
@@ -3122,9 +3455,12 @@ export function usePrepareVapeGameWithdrawLink(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     functionName: 'withdrawLink',
     ...config,
   } as UsePrepareContractWriteConfig<typeof vapeGameABI, 'withdrawLink'>)
@@ -3133,7 +3469,8 @@ export function usePrepareVapeGameWithdrawLink(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameEvent<TEventName extends string>(
   config: Omit<
@@ -3141,9 +3478,12 @@ export function useVapeGameEvent<TEventName extends string>(
     'abi' | 'address'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, TEventName>)
 }
@@ -3151,7 +3491,8 @@ export function useVapeGameEvent<TEventName extends string>(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"Approval"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameApprovalEvent(
   config: Omit<
@@ -3159,9 +3500,12 @@ export function useVapeGameApprovalEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'Approval',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'Approval'>)
@@ -3170,7 +3514,8 @@ export function useVapeGameApprovalEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"GotDividend"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameGotDividendEvent(
   config: Omit<
@@ -3178,9 +3523,12 @@ export function useVapeGameGotDividendEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'GotDividend',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'GotDividend'>)
@@ -3189,7 +3537,8 @@ export function useVapeGameGotDividendEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"LottoWon"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLottoWonEvent(
   config: Omit<
@@ -3197,9 +3546,12 @@ export function useVapeGameLottoWonEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'LottoWon',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'LottoWon'>)
@@ -3208,7 +3560,8 @@ export function useVapeGameLottoWonEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"OwnershipTransferRequested"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameOwnershipTransferRequestedEvent(
   config: Omit<
@@ -3216,9 +3569,12 @@ export function useVapeGameOwnershipTransferRequestedEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'OwnershipTransferRequested',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'OwnershipTransferRequested'>)
@@ -3227,7 +3583,8 @@ export function useVapeGameOwnershipTransferRequestedEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"OwnershipTransferred"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameOwnershipTransferredEvent(
   config: Omit<
@@ -3235,9 +3592,12 @@ export function useVapeGameOwnershipTransferredEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'OwnershipTransferred',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'OwnershipTransferred'>)
@@ -3246,7 +3606,8 @@ export function useVapeGameOwnershipTransferredEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"TookAHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTookAHitEvent(
   config: Omit<
@@ -3254,9 +3615,12 @@ export function useVapeGameTookAHitEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'TookAHit',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'TookAHit'>)
@@ -3265,7 +3629,8 @@ export function useVapeGameTookAHitEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"TookTheLastHit"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTookTheLastHitEvent(
   config: Omit<
@@ -3273,9 +3638,12 @@ export function useVapeGameTookTheLastHitEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'TookTheLastHit',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'TookTheLastHit'>)
@@ -3284,7 +3652,8 @@ export function useVapeGameTookTheLastHitEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"Transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7Ff99542FBD8e7BF7Ee63ec5DD7b7F226D9a6EDD)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransferEvent(
   config: Omit<
@@ -3292,9 +3661,12 @@ export function useVapeGameTransferEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof vapeGameAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: vapeGameABI,
-    address: vapeGameAddress[5],
+    address: vapeGameAddress[chainId as keyof typeof vapeGameAddress],
     eventName: 'Transfer',
     ...config,
   } as UseContractEventConfig<typeof vapeGameABI, 'Transfer'>)
@@ -3303,7 +3675,8 @@ export function useVapeGameTransferEvent(
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinRead<
   TFunctionName extends string,
@@ -3314,9 +3687,168 @@ export function useZoomerCoinRead<
     'abi' | 'address'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"_maxTaxSwap"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinMaxTaxSwap<
+  TFunctionName extends '_maxTaxSwap',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: '_maxTaxSwap',
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"_maxTxAmount"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinMaxTxAmount<
+  TFunctionName extends '_maxTxAmount',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: '_maxTxAmount',
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"_maxWalletSize"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinMaxWalletSize<
+  TFunctionName extends '_maxWalletSize',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: '_maxWalletSize',
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"_reduceBuyTaxAt"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinReduceBuyTaxAt<
+  TFunctionName extends '_reduceBuyTaxAt',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: '_reduceBuyTaxAt',
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"_reduceSellTaxAt"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinReduceSellTaxAt<
+  TFunctionName extends '_reduceSellTaxAt',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: '_reduceSellTaxAt',
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"_taxSwapThreshold"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinTaxSwapThreshold<
+  TFunctionName extends '_taxSwapThreshold',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: '_taxSwapThreshold',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
 }
@@ -3324,7 +3856,8 @@ export function useZoomerCoinRead<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"allowance"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinAllowance<
   TFunctionName extends 'allowance',
@@ -3335,9 +3868,12 @@ export function useZoomerCoinAllowance<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'allowance',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
@@ -3346,7 +3882,8 @@ export function useZoomerCoinAllowance<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"balanceOf"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinBalanceOf<
   TFunctionName extends 'balanceOf',
@@ -3357,9 +3894,12 @@ export function useZoomerCoinBalanceOf<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'balanceOf',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
@@ -3368,7 +3908,8 @@ export function useZoomerCoinBalanceOf<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"decimals"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinDecimals<
   TFunctionName extends 'decimals',
@@ -3379,21 +3920,25 @@ export function useZoomerCoinDecimals<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'decimals',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
 }
 
 /**
- * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"detailsHash"`.
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"isBot"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function useZoomerCoinDetailsHash<
-  TFunctionName extends 'detailsHash',
+export function useZoomerCoinIsBot<
+  TFunctionName extends 'isBot',
   TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
 >(
   config: Omit<
@@ -3401,10 +3946,13 @@ export function useZoomerCoinDetailsHash<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'detailsHash',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'isBot',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
 }
@@ -3412,7 +3960,8 @@ export function useZoomerCoinDetailsHash<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"name"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinName<
   TFunctionName extends 'name',
@@ -3423,10 +3972,39 @@ export function useZoomerCoinName<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'name',
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"owner"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinOwner<
+  TFunctionName extends 'owner',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'owner',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
 }
@@ -3434,7 +4012,8 @@ export function useZoomerCoinName<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"symbol"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinSymbol<
   TFunctionName extends 'symbol',
@@ -3445,9 +4024,12 @@ export function useZoomerCoinSymbol<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'symbol',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
@@ -3456,7 +4038,8 @@ export function useZoomerCoinSymbol<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"totalSupply"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinTotalSupply<
   TFunctionName extends 'totalSupply',
@@ -3467,10 +4050,39 @@ export function useZoomerCoinTotalSupply<
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractRead({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'totalSupply',
+    ...config,
+  } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
+}
+
+/**
+ * Wraps __{@link useContractRead}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"transferDelayEnabled"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinTransferDelayEnabled<
+  TFunctionName extends 'transferDelayEnabled',
+  TSelectData = ReadContractResult<typeof zoomerCoinABI, TFunctionName>,
+>(
+  config: Omit<
+    UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractRead({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'transferDelayEnabled',
     ...config,
   } as UseContractReadConfig<typeof zoomerCoinABI, TFunctionName, TSelectData>)
 }
@@ -3478,7 +4090,8 @@ export function useZoomerCoinTotalSupply<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinWrite<
   TFunctionName extends string,
@@ -3500,9 +4113,49 @@ export function useZoomerCoinWrite<
         chainId?: TChainId
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof zoomerCoinABI, TFunctionName, TMode>({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"addBots"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinAddBots<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof zoomerCoinAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof zoomerCoinABI,
+          'addBots'
+        >['request']['abi'],
+        'addBots',
+        TMode
+      > & { address?: Address; chainId?: TChainId; functionName?: 'addBots' }
+    : UseContractWriteConfig<typeof zoomerCoinABI, 'addBots', TMode> & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'addBots'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<typeof zoomerCoinABI, 'addBots', TMode>({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'addBots',
     ...config,
   } as any)
 }
@@ -3510,7 +4163,8 @@ export function useZoomerCoinWrite<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"approve"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinApprove<
   TMode extends WriteContractMode = undefined,
@@ -3532,20 +4186,24 @@ export function useZoomerCoinApprove<
         functionName?: 'approve'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof zoomerCoinABI, 'approve', TMode>({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'approve',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"burn"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"delBots"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function useZoomerCoinBurn<
+export function useZoomerCoinDelBots<
   TMode extends WriteContractMode = undefined,
   TChainId extends number = keyof typeof zoomerCoinAddress,
 >(
@@ -3553,32 +4211,36 @@ export function useZoomerCoinBurn<
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
           typeof zoomerCoinABI,
-          'burn'
+          'delBots'
         >['request']['abi'],
-        'burn',
+        'delBots',
         TMode
-      > & { address?: Address; chainId?: TChainId; functionName?: 'burn' }
-    : UseContractWriteConfig<typeof zoomerCoinABI, 'burn', TMode> & {
+      > & { address?: Address; chainId?: TChainId; functionName?: 'delBots' }
+    : UseContractWriteConfig<typeof zoomerCoinABI, 'delBots', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
-        functionName?: 'burn'
+        functionName?: 'delBots'
       } = {} as any,
 ) {
-  return useContractWrite<typeof zoomerCoinABI, 'burn', TMode>({
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<typeof zoomerCoinABI, 'delBots', TMode>({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'burn',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'delBots',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"decreaseAllowance"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"manualSwap"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function useZoomerCoinDecreaseAllowance<
+export function useZoomerCoinManualSwap<
   TMode extends WriteContractMode = undefined,
   TChainId extends number = keyof typeof zoomerCoinAddress,
 >(
@@ -3586,207 +4248,111 @@ export function useZoomerCoinDecreaseAllowance<
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
           typeof zoomerCoinABI,
-          'decreaseAllowance'
+          'manualSwap'
         >['request']['abi'],
-        'decreaseAllowance',
+        'manualSwap',
+        TMode
+      > & { address?: Address; chainId?: TChainId; functionName?: 'manualSwap' }
+    : UseContractWriteConfig<typeof zoomerCoinABI, 'manualSwap', TMode> & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'manualSwap'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<typeof zoomerCoinABI, 'manualSwap', TMode>({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'manualSwap',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"removeLimits"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinRemoveLimits<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof zoomerCoinAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof zoomerCoinABI,
+          'removeLimits'
+        >['request']['abi'],
+        'removeLimits',
         TMode
       > & {
         address?: Address
         chainId?: TChainId
-        functionName?: 'decreaseAllowance'
+        functionName?: 'removeLimits'
+      }
+    : UseContractWriteConfig<typeof zoomerCoinABI, 'removeLimits', TMode> & {
+        abi?: never
+        address?: never
+        chainId?: TChainId
+        functionName?: 'removeLimits'
+      } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<typeof zoomerCoinABI, 'removeLimits', TMode>({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'removeLimits',
+    ...config,
+  } as any)
+}
+
+/**
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"renounceOwnership"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinRenounceOwnership<
+  TMode extends WriteContractMode = undefined,
+  TChainId extends number = keyof typeof zoomerCoinAddress,
+>(
+  config: TMode extends 'prepared'
+    ? UseContractWriteConfig<
+        PrepareWriteContractResult<
+          typeof zoomerCoinABI,
+          'renounceOwnership'
+        >['request']['abi'],
+        'renounceOwnership',
+        TMode
+      > & {
+        address?: Address
+        chainId?: TChainId
+        functionName?: 'renounceOwnership'
       }
     : UseContractWriteConfig<
         typeof zoomerCoinABI,
-        'decreaseAllowance',
+        'renounceOwnership',
         TMode
       > & {
         abi?: never
         address?: never
         chainId?: TChainId
-        functionName?: 'decreaseAllowance'
+        functionName?: 'renounceOwnership'
       } = {} as any,
 ) {
-  return useContractWrite<typeof zoomerCoinABI, 'decreaseAllowance', TMode>({
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<typeof zoomerCoinABI, 'renounceOwnership', TMode>({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'decreaseAllowance',
-    ...config,
-  } as any)
-}
-
-/**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"increaseAllowance"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function useZoomerCoinIncreaseAllowance<
-  TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof zoomerCoinAddress,
->(
-  config: TMode extends 'prepared'
-    ? UseContractWriteConfig<
-        PrepareWriteContractResult<
-          typeof zoomerCoinABI,
-          'increaseAllowance'
-        >['request']['abi'],
-        'increaseAllowance',
-        TMode
-      > & {
-        address?: Address
-        chainId?: TChainId
-        functionName?: 'increaseAllowance'
-      }
-    : UseContractWriteConfig<
-        typeof zoomerCoinABI,
-        'increaseAllowance',
-        TMode
-      > & {
-        abi?: never
-        address?: never
-        chainId?: TChainId
-        functionName?: 'increaseAllowance'
-      } = {} as any,
-) {
-  return useContractWrite<typeof zoomerCoinABI, 'increaseAllowance', TMode>({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'increaseAllowance',
-    ...config,
-  } as any)
-}
-
-/**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"initialize"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function useZoomerCoinInitialize<
-  TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof zoomerCoinAddress,
->(
-  config: TMode extends 'prepared'
-    ? UseContractWriteConfig<
-        PrepareWriteContractResult<
-          typeof zoomerCoinABI,
-          'initialize'
-        >['request']['abi'],
-        'initialize',
-        TMode
-      > & { address?: Address; chainId?: TChainId; functionName?: 'initialize' }
-    : UseContractWriteConfig<typeof zoomerCoinABI, 'initialize', TMode> & {
-        abi?: never
-        address?: never
-        chainId?: TChainId
-        functionName?: 'initialize'
-      } = {} as any,
-) {
-  return useContractWrite<typeof zoomerCoinABI, 'initialize', TMode>({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'initialize',
-    ...config,
-  } as any)
-}
-
-/**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"mint"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function useZoomerCoinMint<
-  TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof zoomerCoinAddress,
->(
-  config: TMode extends 'prepared'
-    ? UseContractWriteConfig<
-        PrepareWriteContractResult<
-          typeof zoomerCoinABI,
-          'mint'
-        >['request']['abi'],
-        'mint',
-        TMode
-      > & { address?: Address; chainId?: TChainId; functionName?: 'mint' }
-    : UseContractWriteConfig<typeof zoomerCoinABI, 'mint', TMode> & {
-        abi?: never
-        address?: never
-        chainId?: TChainId
-        functionName?: 'mint'
-      } = {} as any,
-) {
-  return useContractWrite<typeof zoomerCoinABI, 'mint', TMode>({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'mint',
-    ...config,
-  } as any)
-}
-
-/**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"setDetails"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function useZoomerCoinSetDetails<
-  TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof zoomerCoinAddress,
->(
-  config: TMode extends 'prepared'
-    ? UseContractWriteConfig<
-        PrepareWriteContractResult<
-          typeof zoomerCoinABI,
-          'setDetails'
-        >['request']['abi'],
-        'setDetails',
-        TMode
-      > & { address?: Address; chainId?: TChainId; functionName?: 'setDetails' }
-    : UseContractWriteConfig<typeof zoomerCoinABI, 'setDetails', TMode> & {
-        abi?: never
-        address?: never
-        chainId?: TChainId
-        functionName?: 'setDetails'
-      } = {} as any,
-) {
-  return useContractWrite<typeof zoomerCoinABI, 'setDetails', TMode>({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'setDetails',
-    ...config,
-  } as any)
-}
-
-/**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"setDetailsHash"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function useZoomerCoinSetDetailsHash<
-  TMode extends WriteContractMode = undefined,
-  TChainId extends number = keyof typeof zoomerCoinAddress,
->(
-  config: TMode extends 'prepared'
-    ? UseContractWriteConfig<
-        PrepareWriteContractResult<
-          typeof zoomerCoinABI,
-          'setDetailsHash'
-        >['request']['abi'],
-        'setDetailsHash',
-        TMode
-      > & {
-        address?: Address
-        chainId?: TChainId
-        functionName?: 'setDetailsHash'
-      }
-    : UseContractWriteConfig<typeof zoomerCoinABI, 'setDetailsHash', TMode> & {
-        abi?: never
-        address?: never
-        chainId?: TChainId
-        functionName?: 'setDetailsHash'
-      } = {} as any,
-) {
-  return useContractWrite<typeof zoomerCoinABI, 'setDetailsHash', TMode>({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'setDetailsHash',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'renounceOwnership',
     ...config,
   } as any)
 }
@@ -3794,7 +4360,8 @@ export function useZoomerCoinSetDetailsHash<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinTransfer<
   TMode extends WriteContractMode = undefined,
@@ -3816,9 +4383,12 @@ export function useZoomerCoinTransfer<
         functionName?: 'transfer'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof zoomerCoinABI, 'transfer', TMode>({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'transfer',
     ...config,
   } as any)
@@ -3827,7 +4397,8 @@ export function useZoomerCoinTransfer<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"transferFrom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinTransferFrom<
   TMode extends WriteContractMode = undefined,
@@ -3853,20 +4424,24 @@ export function useZoomerCoinTransferFrom<
         functionName?: 'transferFrom'
       } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractWrite<typeof zoomerCoinABI, 'transferFrom', TMode>({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'transferFrom',
     ...config,
   } as any)
 }
 
 /**
- * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"transferOwnership"`.
+ * Wraps __{@link useContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"zoomzoom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function useZoomerCoinTransferOwnership<
+export function useZoomerCoinZoomzoom<
   TMode extends WriteContractMode = undefined,
   TChainId extends number = keyof typeof zoomerCoinAddress,
 >(
@@ -3874,30 +4449,25 @@ export function useZoomerCoinTransferOwnership<
     ? UseContractWriteConfig<
         PrepareWriteContractResult<
           typeof zoomerCoinABI,
-          'transferOwnership'
+          'zoomzoom'
         >['request']['abi'],
-        'transferOwnership',
+        'zoomzoom',
         TMode
-      > & {
-        address?: Address
-        chainId?: TChainId
-        functionName?: 'transferOwnership'
-      }
-    : UseContractWriteConfig<
-        typeof zoomerCoinABI,
-        'transferOwnership',
-        TMode
-      > & {
+      > & { address?: Address; chainId?: TChainId; functionName?: 'zoomzoom' }
+    : UseContractWriteConfig<typeof zoomerCoinABI, 'zoomzoom', TMode> & {
         abi?: never
         address?: never
         chainId?: TChainId
-        functionName?: 'transferOwnership'
+        functionName?: 'zoomzoom'
       } = {} as any,
 ) {
-  return useContractWrite<typeof zoomerCoinABI, 'transferOwnership', TMode>({
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractWrite<typeof zoomerCoinABI, 'zoomzoom', TMode>({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'transferOwnership',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'zoomzoom',
     ...config,
   } as any)
 }
@@ -3905,7 +4475,8 @@ export function useZoomerCoinTransferOwnership<
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function usePrepareZoomerCoinWrite<TFunctionName extends string>(
   config: Omit<
@@ -3913,17 +4484,44 @@ export function usePrepareZoomerCoinWrite<TFunctionName extends string>(
     'abi' | 'address'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     ...config,
   } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, TFunctionName>)
 }
 
 /**
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"addBots"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function usePrepareZoomerCoinAddBots(
+  config: Omit<
+    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'addBots'>,
+    'abi' | 'address' | 'functionName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return usePrepareContractWrite({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'addBots',
+    ...config,
+  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'addBots'>)
+}
+
+/**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"approve"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function usePrepareZoomerCoinApprove(
   config: Omit<
@@ -3931,151 +4529,114 @@ export function usePrepareZoomerCoinApprove(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'approve',
     ...config,
   } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'approve'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"burn"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"delBots"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function usePrepareZoomerCoinBurn(
+export function usePrepareZoomerCoinDelBots(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'burn'>,
+    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'delBots'>,
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'burn',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'delBots',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'burn'>)
+  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'delBots'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"decreaseAllowance"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"manualSwap"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function usePrepareZoomerCoinDecreaseAllowance(
+export function usePrepareZoomerCoinManualSwap(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'decreaseAllowance'>,
+    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'manualSwap'>,
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'decreaseAllowance',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'manualSwap',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'decreaseAllowance'>)
+  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'manualSwap'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"increaseAllowance"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"removeLimits"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function usePrepareZoomerCoinIncreaseAllowance(
+export function usePrepareZoomerCoinRemoveLimits(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'increaseAllowance'>,
+    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'removeLimits'>,
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'increaseAllowance',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'removeLimits',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'increaseAllowance'>)
+  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'removeLimits'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"initialize"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"renounceOwnership"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function usePrepareZoomerCoinInitialize(
+export function usePrepareZoomerCoinRenounceOwnership(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'initialize'>,
+    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'renounceOwnership'>,
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'initialize',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'renounceOwnership',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'initialize'>)
-}
-
-/**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"mint"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function usePrepareZoomerCoinMint(
-  config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'mint'>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
-) {
-  return usePrepareContractWrite({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'mint',
-    ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'mint'>)
-}
-
-/**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"setDetails"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function usePrepareZoomerCoinSetDetails(
-  config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'setDetails'>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
-) {
-  return usePrepareContractWrite({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'setDetails',
-    ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'setDetails'>)
-}
-
-/**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"setDetailsHash"`.
- *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
- */
-export function usePrepareZoomerCoinSetDetailsHash(
-  config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'setDetailsHash'>,
-    'abi' | 'address' | 'functionName'
-  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
-) {
-  return usePrepareContractWrite({
-    abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'setDetailsHash',
-    ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'setDetailsHash'>)
+  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'renounceOwnership'>)
 }
 
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function usePrepareZoomerCoinTransfer(
   config: Omit<
@@ -4083,9 +4644,12 @@ export function usePrepareZoomerCoinTransfer(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'transfer',
     ...config,
   } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'transfer'>)
@@ -4094,7 +4658,8 @@ export function usePrepareZoomerCoinTransfer(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"transferFrom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function usePrepareZoomerCoinTransferFrom(
   config: Omit<
@@ -4102,37 +4667,45 @@ export function usePrepareZoomerCoinTransferFrom(
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     functionName: 'transferFrom',
     ...config,
   } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'transferFrom'>)
 }
 
 /**
- * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"transferOwnership"`.
+ * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link zoomerCoinABI}__ and `functionName` set to `"zoomzoom"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
-export function usePrepareZoomerCoinTransferOwnership(
+export function usePrepareZoomerCoinZoomzoom(
   config: Omit<
-    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'transferOwnership'>,
+    UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'zoomzoom'>,
     'abi' | 'address' | 'functionName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return usePrepareContractWrite({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
-    functionName: 'transferOwnership',
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    functionName: 'zoomzoom',
     ...config,
-  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'transferOwnership'>)
+  } as UsePrepareContractWriteConfig<typeof zoomerCoinABI, 'zoomzoom'>)
 }
 
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link zoomerCoinABI}__.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinEvent<TEventName extends string>(
   config: Omit<
@@ -4140,9 +4713,12 @@ export function useZoomerCoinEvent<TEventName extends string>(
     'abi' | 'address'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     ...config,
   } as UseContractEventConfig<typeof zoomerCoinABI, TEventName>)
 }
@@ -4150,7 +4726,8 @@ export function useZoomerCoinEvent<TEventName extends string>(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link zoomerCoinABI}__ and `eventName` set to `"Approval"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinApprovalEvent(
   config: Omit<
@@ -4158,18 +4735,68 @@ export function useZoomerCoinApprovalEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     eventName: 'Approval',
     ...config,
   } as UseContractEventConfig<typeof zoomerCoinABI, 'Approval'>)
 }
 
 /**
+ * Wraps __{@link useContractEvent}__ with `abi` set to __{@link zoomerCoinABI}__ and `eventName` set to `"MaxTxAmountUpdated"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinMaxTxAmountUpdatedEvent(
+  config: Omit<
+    UseContractEventConfig<typeof zoomerCoinABI, 'MaxTxAmountUpdated'>,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractEvent({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    eventName: 'MaxTxAmountUpdated',
+    ...config,
+  } as UseContractEventConfig<typeof zoomerCoinABI, 'MaxTxAmountUpdated'>)
+}
+
+/**
+ * Wraps __{@link useContractEvent}__ with `abi` set to __{@link zoomerCoinABI}__ and `eventName` set to `"OwnershipTransferred"`.
+ *
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ */
+export function useZoomerCoinOwnershipTransferredEvent(
+  config: Omit<
+    UseContractEventConfig<typeof zoomerCoinABI, 'OwnershipTransferred'>,
+    'abi' | 'address' | 'eventName'
+  > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
+) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
+  return useContractEvent({
+    abi: zoomerCoinABI,
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
+    eventName: 'OwnershipTransferred',
+    ...config,
+  } as UseContractEventConfig<typeof zoomerCoinABI, 'OwnershipTransferred'>)
+}
+
+/**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link zoomerCoinABI}__ and `eventName` set to `"Transfer"`.
  *
- * [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D505C03d30e65f6e9b4Ef88855a47a89e4b7676)
+ * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1)
  */
 export function useZoomerCoinTransferEvent(
   config: Omit<
@@ -4177,9 +4804,12 @@ export function useZoomerCoinTransferEvent(
     'abi' | 'address' | 'eventName'
   > & { chainId?: keyof typeof zoomerCoinAddress } = {} as any,
 ) {
+  const { chain } = useNetwork()
+  const defaultChainId = useChainId()
+  const chainId = config.chainId ?? chain?.id ?? defaultChainId
   return useContractEvent({
     abi: zoomerCoinABI,
-    address: zoomerCoinAddress[5],
+    address: zoomerCoinAddress[chainId as keyof typeof zoomerCoinAddress],
     eventName: 'Transfer',
     ...config,
   } as UseContractEventConfig<typeof zoomerCoinABI, 'Transfer'>)
