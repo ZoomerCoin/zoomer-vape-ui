@@ -208,7 +208,7 @@ const CurrentWinner = () => {
       </StatNumber>
       <StatHelpText>
         {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
-        {numHitsIsSuccess ?? numHits! < 50 ? need : ""}
+        {numHitsIsSuccess ?? numHits! < 20 ? need : ""}
       </StatHelpText>
     </Stat>
   );
