@@ -319,7 +319,7 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
       <Center width={"50%"}>
         {(isSuccessHasEnough && hasEnough) ||
         (isSuccessHasNft && hasNft) ||
-        (isSuccessNumHits && isSuccessZoomerHits && numHits > zoomerHits) ? (
+        (isSuccessNumHits && isSuccessZoomerHits && numHits! > zoomerHits!) ? (
           <Button
             colorScheme="pink"
             width="100%"
