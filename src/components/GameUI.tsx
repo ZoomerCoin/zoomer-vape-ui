@@ -156,7 +156,7 @@ const IntroModal = ({ onClose, isOpen }: IntroModalProps) => {
             playsInline
             autoPlay
             loop
-            src={require("../../public/rektzoomercollab.mp4")}
+            src={require("../../public/takethehit.mp4")}
           />
         </ModalBody>
         <ModalFooter>
