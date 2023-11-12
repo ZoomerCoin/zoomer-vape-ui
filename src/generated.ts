@@ -186,7 +186,7 @@ export const erc721ABI = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export const vapeGameABI = [
@@ -734,16 +734,16 @@ export const vapeGameABI = [
 ] as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export const vapeGameAddress = {
-  1: '0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5',
+  1: '0xC018FF8c08842151CbfA26E72Fe39fD0A155120D',
   5: '0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14',
 } as const
 
 /**
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export const vapeGameConfig = {
@@ -1503,7 +1503,7 @@ export function useErc721TransferEvent(
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameRead<
@@ -1528,7 +1528,7 @@ export function useVapeGameRead<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"DIVIDEND_CONTRIBUTION"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameDividendContribution<
@@ -1554,7 +1554,7 @@ export function useVapeGameDividendContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"GAME_TIME"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameGameTime<
@@ -1580,7 +1580,7 @@ export function useVapeGameGameTime<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"LOTTO_CONTRIBUTION"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLottoContribution<
@@ -1606,7 +1606,7 @@ export function useVapeGameLottoContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"MIN_INVEST_TICK"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameMinInvestTick<
@@ -1632,7 +1632,7 @@ export function useVapeGameMinInvestTick<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"MIN_ZOOMER"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameMinZoomer<
@@ -1658,7 +1658,7 @@ export function useVapeGameMinZoomer<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"POT_CONTRIBUTION"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePotContribution<
@@ -1684,7 +1684,7 @@ export function useVapeGamePotContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"TREASURY_CONTRIBUTION"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTreasuryContribution<
@@ -1710,7 +1710,7 @@ export function useVapeGameTreasuryContribution<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"VAPE_PRICE_TICK"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameVapePriceTick<
@@ -1736,7 +1736,7 @@ export function useVapeGameVapePriceTick<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"ZOOMER_HITS"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameZoomerHits<
@@ -1762,7 +1762,7 @@ export function useVapeGameZoomerHits<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"allowance"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameAllowance<
@@ -1788,7 +1788,7 @@ export function useVapeGameAllowance<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"balanceOf"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameBalanceOf<
@@ -1814,7 +1814,7 @@ export function useVapeGameBalanceOf<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"collectedFee"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameCollectedFee<
@@ -1840,7 +1840,7 @@ export function useVapeGameCollectedFee<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decimals"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameDecimals<
@@ -1866,7 +1866,7 @@ export function useVapeGameDecimals<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"finalLottoValueETH"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameFinalLottoValueEth<
@@ -1892,7 +1892,7 @@ export function useVapeGameFinalLottoValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"finalLottoWinner"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameFinalLottoWinner<
@@ -1918,7 +1918,7 @@ export function useVapeGameFinalLottoWinner<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"finalPotValueETH"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameFinalPotValueEth<
@@ -1944,7 +1944,7 @@ export function useVapeGameFinalPotValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"getMyDividend"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameGetMyDividend<
@@ -1970,7 +1970,7 @@ export function useVapeGameGetMyDividend<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"hasEnoughZoomer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameHasEnoughZoomer<
@@ -1996,7 +1996,7 @@ export function useVapeGameHasEnoughZoomer<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"hasNft"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameHasNft<
@@ -2022,7 +2022,7 @@ export function useVapeGameHasNft<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"hitters"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameHitters<
@@ -2048,7 +2048,7 @@ export function useVapeGameHitters<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"isPaused"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameIsPaused<
@@ -2074,7 +2074,7 @@ export function useVapeGameIsPaused<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lastPurchasedAddress"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLastPurchasedAddress<
@@ -2100,7 +2100,7 @@ export function useVapeGameLastPurchasedAddress<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lastPurchasedTime"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLastPurchasedTime<
@@ -2126,7 +2126,7 @@ export function useVapeGameLastPurchasedTime<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"linkAddress"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLinkAddress<
@@ -2152,7 +2152,7 @@ export function useVapeGameLinkAddress<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"lottoValueETH"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLottoValueEth<
@@ -2178,7 +2178,7 @@ export function useVapeGameLottoValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"minInvest"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameMinInvest<
@@ -2204,7 +2204,7 @@ export function useVapeGameMinInvest<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"name"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameName<
@@ -2230,7 +2230,7 @@ export function useVapeGameName<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"nfts"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameNfts<
@@ -2256,7 +2256,7 @@ export function useVapeGameNfts<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"numHits"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameNumHits<
@@ -2282,7 +2282,7 @@ export function useVapeGameNumHits<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"owner"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameOwner<
@@ -2308,7 +2308,7 @@ export function useVapeGameOwner<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"potValueETH"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePotValueEth<
@@ -2334,7 +2334,7 @@ export function useVapeGamePotValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"symbol"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameSymbol<
@@ -2360,7 +2360,7 @@ export function useVapeGameSymbol<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"totalDividendsValueETH"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTotalDividendsValueEth<
@@ -2386,7 +2386,7 @@ export function useVapeGameTotalDividendsValueEth<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"totalSupply"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTotalSupply<
@@ -2412,7 +2412,7 @@ export function useVapeGameTotalSupply<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"vapeTokenPrice"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameVapeTokenPrice<
@@ -2438,7 +2438,7 @@ export function useVapeGameVapeTokenPrice<
 /**
  * Wraps __{@link useContractRead}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"zoomer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameZoomer<
@@ -2464,7 +2464,7 @@ export function useVapeGameZoomer<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameWrite<
@@ -2500,7 +2500,7 @@ export function useVapeGameWrite<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"acceptOwnership"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameAcceptOwnership<
@@ -2541,7 +2541,7 @@ export function useVapeGameAcceptOwnership<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"approve"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameApprove<
@@ -2578,7 +2578,7 @@ export function useVapeGameApprove<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decreaseAllowance"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameDecreaseAllowance<
@@ -2619,7 +2619,7 @@ export function useVapeGameDecreaseAllowance<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"increaseAllowance"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameIncreaseAllowance<
@@ -2660,7 +2660,7 @@ export function useVapeGameIncreaseAllowance<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"payMyDividend"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePayMyDividend<
@@ -2701,7 +2701,7 @@ export function useVapeGamePayMyDividend<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"paydDevFee"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGamePaydDevFee<
@@ -2738,7 +2738,7 @@ export function useVapeGamePaydDevFee<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"rawFulfillRandomWords"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameRawFulfillRandomWords<
@@ -2783,7 +2783,7 @@ export function useVapeGameRawFulfillRandomWords<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"startGame"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameStartGame<
@@ -2820,7 +2820,7 @@ export function useVapeGameStartGame<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"sweep"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameSweep<
@@ -2857,7 +2857,7 @@ export function useVapeGameSweep<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeAVapeHit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTakeAVapeHit<
@@ -2898,7 +2898,7 @@ export function useVapeGameTakeAVapeHit<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeTheLastHit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTakeTheLastHit<
@@ -2939,7 +2939,7 @@ export function useVapeGameTakeTheLastHit<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transfer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransfer<
@@ -2976,7 +2976,7 @@ export function useVapeGameTransfer<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransferFrom<
@@ -3017,7 +3017,7 @@ export function useVapeGameTransferFrom<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferOwnership"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransferOwnership<
@@ -3058,7 +3058,7 @@ export function useVapeGameTransferOwnership<
 /**
  * Wraps __{@link useContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"withdrawLink"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameWithdrawLink<
@@ -3099,7 +3099,7 @@ export function useVapeGameWithdrawLink<
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameWrite<TFunctionName extends string>(
@@ -3121,7 +3121,7 @@ export function usePrepareVapeGameWrite<TFunctionName extends string>(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"acceptOwnership"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameAcceptOwnership(
@@ -3144,7 +3144,7 @@ export function usePrepareVapeGameAcceptOwnership(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"approve"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameApprove(
@@ -3167,7 +3167,7 @@ export function usePrepareVapeGameApprove(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"decreaseAllowance"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameDecreaseAllowance(
@@ -3190,7 +3190,7 @@ export function usePrepareVapeGameDecreaseAllowance(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"increaseAllowance"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameIncreaseAllowance(
@@ -3213,7 +3213,7 @@ export function usePrepareVapeGameIncreaseAllowance(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"payMyDividend"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGamePayMyDividend(
@@ -3236,7 +3236,7 @@ export function usePrepareVapeGamePayMyDividend(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"paydDevFee"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGamePaydDevFee(
@@ -3259,7 +3259,7 @@ export function usePrepareVapeGamePaydDevFee(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"rawFulfillRandomWords"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameRawFulfillRandomWords(
@@ -3285,7 +3285,7 @@ export function usePrepareVapeGameRawFulfillRandomWords(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"startGame"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameStartGame(
@@ -3308,7 +3308,7 @@ export function usePrepareVapeGameStartGame(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"sweep"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameSweep(
@@ -3331,7 +3331,7 @@ export function usePrepareVapeGameSweep(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeAVapeHit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTakeAVapeHit(
@@ -3354,7 +3354,7 @@ export function usePrepareVapeGameTakeAVapeHit(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"takeTheLastHit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTakeTheLastHit(
@@ -3377,7 +3377,7 @@ export function usePrepareVapeGameTakeTheLastHit(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transfer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTransfer(
@@ -3400,7 +3400,7 @@ export function usePrepareVapeGameTransfer(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferFrom"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTransferFrom(
@@ -3423,7 +3423,7 @@ export function usePrepareVapeGameTransferFrom(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"transferOwnership"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameTransferOwnership(
@@ -3446,7 +3446,7 @@ export function usePrepareVapeGameTransferOwnership(
 /**
  * Wraps __{@link usePrepareContractWrite}__ with `abi` set to __{@link vapeGameABI}__ and `functionName` set to `"withdrawLink"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function usePrepareVapeGameWithdrawLink(
@@ -3469,7 +3469,7 @@ export function usePrepareVapeGameWithdrawLink(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameEvent<TEventName extends string>(
@@ -3491,7 +3491,7 @@ export function useVapeGameEvent<TEventName extends string>(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"Approval"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameApprovalEvent(
@@ -3514,7 +3514,7 @@ export function useVapeGameApprovalEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"GotDividend"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameGotDividendEvent(
@@ -3537,7 +3537,7 @@ export function useVapeGameGotDividendEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"LottoWon"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameLottoWonEvent(
@@ -3560,7 +3560,7 @@ export function useVapeGameLottoWonEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"OwnershipTransferRequested"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameOwnershipTransferRequestedEvent(
@@ -3583,7 +3583,7 @@ export function useVapeGameOwnershipTransferRequestedEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"OwnershipTransferred"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameOwnershipTransferredEvent(
@@ -3606,7 +3606,7 @@ export function useVapeGameOwnershipTransferredEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"TookAHit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTookAHitEvent(
@@ -3629,7 +3629,7 @@ export function useVapeGameTookAHitEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"TookTheLastHit"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTookTheLastHitEvent(
@@ -3652,7 +3652,7 @@ export function useVapeGameTookTheLastHitEvent(
 /**
  * Wraps __{@link useContractEvent}__ with `abi` set to __{@link vapeGameABI}__ and `eventName` set to `"Transfer"`.
  *
- * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0x0D6dC2a36C5c3EbD6F9B67Afd18b31C0074089E5)
+ * - [__View Contract on Ethereum Etherscan__](https://etherscan.io/address/0xC018FF8c08842151CbfA26E72Fe39fD0A155120D)
  * - [__View Contract on Goerli Etherscan__](https://goerli.etherscan.io/address/0xE7e52781F4D7af7CD008C02d630d06a22dcEAb14)
  */
 export function useVapeGameTransferEvent(
