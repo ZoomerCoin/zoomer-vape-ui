@@ -209,7 +209,7 @@ const CurrentWinner = () => {
       </StatNumber>
       <StatHelpText>
         {numHitsIsSuccess ? numHits?.toString() : "..."} hits taken
-        {numHitsIsSuccess && (numHits! < 20) ? need : ""}
+        {numHitsIsSuccess && numHits! < 20 ? need : ""}
       </StatHelpText>
     </Stat>
   );
@@ -345,8 +345,7 @@ const TakeAHit = ({ address, isPaused }: TakeAHitProps) => {
               {isSuccessBalance ? formatEther(balance!) : "..."}!{" "}
               <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
                 BUY SOME!
-              </Link>{" "}
-              Rektguy NFT collections work also!
+              </Link>
             </Text>
           </VStack>
         )}
@@ -507,14 +506,6 @@ const GameDescription = () => {
             $ZOOMER in your wallet,{" "}
             <Link href={BUY_ZOOMER_LINK} isExternal color="teal.500">
               buy it here!
-            </Link>
-            . Due to our bussin collab with Rektguys, you can also use{" "}
-            <Link
-              href={"https://opensea.io/collection/rektguy"}
-              isExternal
-              color="teal.500"
-            >
-              Rektguy NFTs!
             </Link>
             <br />
             7. ONE lucky Zoomer gets a nice payout from the final pot (5% of the
