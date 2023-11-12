@@ -50,7 +50,7 @@ const Page = () => {
             <Flex direction={"row"}>
               <Spacer />
               {colorMode === "dark" ? (
-                <Image boxSize="400px" src="/rektvape.png" alt="take a hit" />
+                <Image boxSize="400px" src="/vape_lady.png" alt="take a hit" />
               ) : (
                 <Image boxSize="400px" src="/vaper.webp" alt="take a hit" />
               )}
